@@ -1,4 +1,4 @@
-"""Module for the temperature delta class."""
+"""Module for the temperature difference class."""
 
 from typing import overload
 

@@ -3,7 +3,7 @@ import unittest
 from units import Temperature, TemperatureDelta, TemperatureUnit
 
 
-class TestTemperatureAndTemperatureDelta(unittest.TestCase):
+class TemperatureAndTemperatureDeltaTest(unittest.TestCase):
     """Unit tests for interactions between temperature and temperature delta classes."""
 
     def test_add_temperature_delta_to_temperature_produces_temperature(self) -> None:

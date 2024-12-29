@@ -19,11 +19,10 @@ class TemperatureTest(unittest.TestCase):
     def test_get_temperature_value_as_unit(self) -> None:
         temperature = Temperature(0, TemperatureUnit.CELSIUS)
 
-        # Add subtests for units as they're added here
         for unit, expected_value in [
-            (TemperatureUnit.CELSIUS, 0),
+            (TemperatureUnit.CELSIUS, 0.0),
             (TemperatureUnit.KELVIN, 273.15),
-            (TemperatureUnit.FAHRENHEIT, 32),
+            (TemperatureUnit.FAHRENHEIT, 32.0),
         ]:
             with self.subTest(unit=unit, expected_value=expected_value):
                 self.assertAlmostEqual(expected_value, temperature.as_unit(unit))

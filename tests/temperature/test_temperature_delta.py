@@ -13,10 +13,9 @@ class TemperatureDeltaTest(unittest.TestCase):
     def test_get_temperature_delta_value_as_unit(self) -> None:
         delta = TemperatureDelta(1, TemperatureUnit.CELSIUS)
 
-        # NB: Add subtests for new units as they're added here
         for unit, expected_value in [
-            (TemperatureUnit.CELSIUS, 1),
-            (TemperatureUnit.KELVIN, 1),
+            (TemperatureUnit.CELSIUS, 1.0),
+            (TemperatureUnit.KELVIN, 1.0),
             (TemperatureUnit.FAHRENHEIT, 9 / 5),
         ]:
             with self.subTest(unit=unit, expected_value=expected_value):

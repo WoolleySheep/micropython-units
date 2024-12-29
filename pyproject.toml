@@ -6,6 +6,7 @@ dependencies = []
 
 [dependency-groups]
 dev = [
+    "coverage>=7.6.10",
     "pylint>=3.3.3",
     "pyright>=1.1.391",
     "ruff>=0.8.4",

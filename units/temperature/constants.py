@@ -1,4 +1,4 @@
-"""Module for the absolute zero temperature constant."""
+"""Module for temperature constants."""
 
 from typing import Final
 
