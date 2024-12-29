@@ -1,7 +1,7 @@
 """Package for pressure units and associated helper functions."""
 
-from .constants import STANDARD_ATMOSPHERIC_PRESSURE_AS_PASCAL
 from .helpers import (
+    STANDARD_ATMOSPHERIC_PRESSURE_AS_PASCAL,
     get_abbreviation,
     get_name,
     get_unit_delta_per_pascal,

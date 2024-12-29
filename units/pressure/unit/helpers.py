@@ -2,9 +2,11 @@
 
 from typing import Final
 
-from .constants import STANDARD_ATMOSPHERIC_PRESSURE_AS_PASCAL
 from .info import UnitInfo
 from .unit import Unit
+
+STANDARD_ATMOSPHERIC_PRESSURE_AS_PASCAL: Final = 101_325
+
 
 # All info is entered here to create a SSoT
 _UNITS_INFO: Final = [

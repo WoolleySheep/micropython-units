@@ -17,7 +17,7 @@
             "github:WoolleySheep/micropython-units/units/temperature/temperature_delta.py"
         ],
         [
-            "units/temperature/absolute_zero.py",
+            "units/temperature/constants.py",
             "github:WoolleySheep/micropython-units/units/temperature/constants.py"
         ],
         [
@@ -39,6 +39,38 @@
         [
             "units/temperature/unit/unit.py",
             "github:WoolleySheep/micropython-units/units/temperature/unit/unit.py"
+        ],
+        [
+            "units/pressure/__init__.py",
+            "github:WoolleySheep/micropython-units/units/pressure/__init__.py"
+        ],
+        [
+            "units/pressure/pressure.py",
+            "github:WoolleySheep/micropython-units/units/pressure/pressure.py"
+        ],
+        [
+            "units/pressure/pressure_delta.py",
+            "github:WoolleySheep/micropython-units/units/pressure/pressure_delta.py"
+        ],
+        [
+            "units/pressure/constants.py",
+            "github:WoolleySheep/micropython-units/units/pressure/constants.py"
+        ],
+        [
+            "units/pressure/unit/__init__.py",
+            "github:WoolleySheep/micropython-units/units/pressure/unit/__init__.py"
+        ],
+        [
+            "units/pressure/unit/helpers.py",
+            "github:WoolleySheep/micropython-units/units/pressure/unit/helpers.py"
+        ],
+        [
+            "units/pressure/unit/info.py",
+            "github:WoolleySheep/micropython-units/units/pressure/unit/info.py"
+        ],
+        [
+            "units/pressure/unit/unit.py",
+            "github:WoolleySheep/micropython-units/units/pressure/unit/unit.py"
         ]
     ],
     "deps": [
