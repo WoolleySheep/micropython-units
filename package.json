@@ -1,0 +1,51 @@
+{
+    "urls": [
+        [
+            "units/__init__.py",
+            "github:WoolleySheep/micropython-units/units/__init__.py"
+        ],
+        [
+            "units/temperature/__init__.py",
+            "github:WoolleySheep/micropython-units/units/temperature/__init__.py"
+        ],
+        [
+            "units/temperature/temperature.py",
+            "github:WoolleySheep/micropython-units/units/temperature/temperature.py"
+        ],
+        [
+            "units/temperature/temperature_delta.py",
+            "github:WoolleySheep/micropython-units/units/temperature/temperature_delta.py"
+        ],
+        [
+            "units/temperature/absolute_zero.py",
+            "github:WoolleySheep/micropython-units/units/temperature/absolute_zero.py"
+        ],
+        [
+            "units/temperature/unit/__init__.py",
+            "github:WoolleySheep/micropython-units/units/temperature/unit/__init__.py"
+        ],
+        [
+            "units/temperature/unit/conversion_parameters.py",
+            "github:WoolleySheep/micropython-units/units/temperature/unit/conversion_parameters.py"
+        ],
+        [
+            "units/temperature/unit/helpers.py",
+            "github:WoolleySheep/micropython-units/units/temperature/unit/helpers.py"
+        ],
+        [
+            "units/temperature/unit/info.py",
+            "github:WoolleySheep/micropython-units/units/temperature/unit/info.py"
+        ],
+        [
+            "units/temperature/unit/unit.py",
+            "github:WoolleySheep/micropython-units/units/temperature/unit/unit.py"
+        ]
+    ],
+    "deps": [
+        [
+            "github:Josverl/micropython-stubs/mip/typing.py",
+            "main"
+        ]
+    ],
+    "version": "0.1"
+}
