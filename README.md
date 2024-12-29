@@ -58,7 +58,7 @@ For more information see [the office package management resource](https://docs.m
 ## For contributors
 ### Development
 #### Pre-requisites
-- uv[https://docs.astral.sh/uv/]
+- [uv](https://docs.astral.sh/uv/)
 #### Linting
     uv run ruff check .\units
     uv run pylint .\units
