@@ -1,5 +1,6 @@
 """Package for temperature-related classes and constants."""
 
+from .below_absolute_zero_error import BelowAbsoluteZeroError
 from .constants import ABSOLUTE_ZERO
 from .temperature import Temperature
 from .temperature_delta import TemperatureDelta
@@ -10,4 +11,5 @@ __all__ = [
     "Temperature",
     "TemperatureDelta",
     "Unit",
+    "BelowAbsoluteZeroError",
 ]

@@ -28,7 +28,7 @@ This library aims to remove the cognitive load of managing units, by making phys
     pressure_in_psi = pressure.as_unit(PressureUnit.POUND_PER_SQUARE_INCH)   # 14.8098...
     external_function_requiring_psi(pressure_in_psi)
 
-Unit-agnostic manipulation & comparison of physical quantities is also supported through two classes for each quantity type; <X> and <X>Delta. This approach is inspired by `datetime` and `timedelta` in CPython. This allows for arbitrarily large deltas, while ensuring that the physical quantities themselves always make sense.
+Unit-agnostic manipulation & comparison of physical quantities is also supported through a pair of classes for each quantity type; `PHYSICAL_QUANTITY` and `PHYSICAL_QUANTITY_Delta`. This approach is inspired by `datetime` and `timedelta` in CPython. This allows for arbitrarily large/small/negative differences, while ensuring that the physical quantities themselves always make sense.
 
     pressure1 = read_pressure_sensor()   # Pressure(1.1, PressureUnit.ATMOSPHERE)
 

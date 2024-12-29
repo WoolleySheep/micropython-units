@@ -2,6 +2,7 @@
 
 from typing import overload
 
+from .negative_pressure_value_error import NegativePressureValueError
 from .pressure_delta import PressureDelta
 from .unit import (
     Unit,
@@ -16,7 +17,7 @@ class Pressure:
 
     def __init__(self, value: float, unit: Unit) -> None:
         if value < 0:
-            raise ValueError
+            raise NegativePressureValueError(value=value)
 
         self._value = value
         self._unit = unit

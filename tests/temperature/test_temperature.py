@@ -1,6 +1,6 @@
 import unittest
 
-from units import Temperature, TemperatureUnit
+from units import BelowAbsoluteZeroError, Temperature, TemperatureUnit
 
 
 class TemperatureTest(unittest.TestCase):
@@ -13,8 +13,10 @@ class TemperatureTest(unittest.TestCase):
     def test_exception_raised_when_creating_temperature_less_than_absolute_zero(
         self,
     ) -> None:
-        with self.assertRaises(ValueError):
+        with self.assertRaises(BelowAbsoluteZeroError) as cm:
             _ = Temperature(-300, TemperatureUnit.CELSIUS)
+        self.assertAlmostEqual(-300, cm.exception.value)
+        self.assertEqual(TemperatureUnit.CELSIUS, cm.exception.unit)
 
     def test_get_temperature_value_as_unit(self) -> None:
         temperature = Temperature(0, TemperatureUnit.CELSIUS)

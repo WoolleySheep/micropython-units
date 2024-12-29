@@ -1,6 +1,6 @@
 import unittest
 
-from units import Pressure, PressureUnit
+from units import NegativePressureValueError, Pressure, PressureUnit
 
 
 class PressureTest(unittest.TestCase):
@@ -10,11 +10,12 @@ class PressureTest(unittest.TestCase):
         # Test passes if it simply doesn't throw an exception
         _ = Pressure(1, PressureUnit.PASCAL)
 
-    def test_exception_raised_when_creating_pressure_less_than_absolute_zero(
+    def test_exception_raised_when_creating_pressure_value_is_negative(
         self,
     ) -> None:
-        with self.assertRaises(ValueError):
+        with self.assertRaises(NegativePressureValueError) as cm:
             _ = Pressure(-300, PressureUnit.PASCAL)
+        self.assertAlmostEqual(-300, cm.exception.value)
 
     def test_get_pressure_value_as_unit(self) -> None:
         pressure = Pressure(1, PressureUnit.PASCAL)

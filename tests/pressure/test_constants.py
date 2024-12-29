@@ -3,12 +3,11 @@ import unittest
 from units import PressureUnit, pressure
 
 
-class AbsoluteZeroTest(unittest.TestCase):
-    """Unit tests for absolute zero pressure."""
+class PerfectVacuumTest(unittest.TestCase):
+    """Unit tests for perfect vacuum pressure."""
 
-    def test_absolute_zero_value(self):
-        """Test the absolute zero value."""
-        self.assertAlmostEqual(0, pressure.ABSOLUTE_ZERO.as_unit(PressureUnit.PASCAL))
+    def test_perfect_vacuum_value(self):
+        self.assertAlmostEqual(0, pressure.PERFECT_VACUUM.as_unit(PressureUnit.PASCAL))
 
 
 class StandardAtmosphereTest(unittest.TestCase):

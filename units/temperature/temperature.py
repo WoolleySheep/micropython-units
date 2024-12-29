@@ -2,6 +2,7 @@
 
 from typing import Final, overload
 
+from .below_absolute_zero_error import BelowAbsoluteZeroError
 from .temperature_delta import TemperatureDelta
 from .unit import (
     Unit,
@@ -22,7 +23,7 @@ class Temperature:
             value - unit_conversion_parameters.absolute_zero_offset
         ) / unit_conversion_parameters.unit_delta_per_degree_kelvin
         if value_as_kelvin < ABSOLUTE_ZERO_AS_KELVIN:
-            raise ValueError
+            raise BelowAbsoluteZeroError(value=value, unit=unit)
 
         self._value = value
         self._unit = unit
