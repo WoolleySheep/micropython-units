@@ -24,16 +24,20 @@ class UnitInfo:
 
     @property
     def unit(self) -> Unit:
+        """The unit the information relates to."""
         return self._unit
 
     @property
     def name(self) -> str:
+        """The name of the unit."""
         return self._name
 
     @property
     def abbreviation(self) -> str:
+        """The abbreviation of the unit."""
         return self._abbreviation
 
     @property
     def conversion_parameters(self) -> UnitConversionParameters:
+        """The conversion parameters associated with the unit."""
         return self._conversion_parameters

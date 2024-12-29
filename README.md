@@ -1,14 +1,15 @@
 # micropython-units
-A lightweight library for representing physical quantities
+A lightweight library for working with physical quantities
 
 ## Example
     from units import Temperature, TemperatureDelta, TemperatureUnit
 
     temp = Temperature(50, TemperatureUnit.CELSIUS)
     temp2 = temp + TemperatureDelta(25, TemperatureUnit.KELVIN)  # Temperature(75, TemperatureUnit.CELSIUS)
+    temp2_in_frt = temp2.as_unit(TemperatureUnit.FAHRENHEIT)  # 167
 
 ## Purpose
-Dealing with the units of physical quantities in SW is tricky. At best, developers adopt conventions to smooth the process, such as variable name postscripts (eg: `gauge_reading_kpa`), or a common unit that all values are translated into at the system boundaries. At worst, wires get crossed and the Mars Climate Orbiter burns up because NASA uses metric while Lockheed Martin uses imperial.
+Dealing with physical quantities in SW is tricky, because the same quantity can have different values depending on the unit used. While conventions exist to address this (such as using variable name postscripts that specify the unit, or adopting a single unit that all values should be converted to at the system boundary), these impose an additional cognitive load on developers. And when it goes wrong, wires get crossed and the Mars Climate Orbiter burns up because NASA uses metric while Lockheed Martin uses imperial.
 
 This library aims to remove the cognitive load of managing units, by making physical quantities unit-agnostic. Units are only considered during object instantiation, and when the developer explicitly requests the quantity in terms of a specific unit.
 
@@ -27,7 +28,7 @@ This library aims to remove the cognitive load of managing units, by making phys
     temp_in_fahrenheit = temp.as_unit(TemperatureUnit.FAHRENHEIT)   # 78.8
     external_function_requiring_fahrenheit(temp_in_fahrenheit)
 
-Unit-agnostic manipulation of physical quantities is also supported through two classes for each quantity type; <X> and <X>Delta. This approach is inspired by `datetime` and `timedelta` in cpython. This allows for arbitrarily large deltas, while ensuring that the physical quantities themselves always make sense.
+Unit-agnostic manipulation of physical quantities is also supported through two classes for each quantity type; <X> and <X>Delta. This approach is inspired by `datetime` and `timedelta` in CPython. This allows for arbitrarily large deltas, while ensuring that the physical quantities themselves always make sense.
 
     temp1 = read_temperature_sensor()   # Temperature(35, TemperatureUnit.CELSIUS)
 
@@ -55,31 +56,45 @@ For more information see [the office package management resource](https://docs.m
 
 ## For contributors
 ### Development
+#### Pre-requisites
+- uv[https://docs.astral.sh/uv/]
+#### Linting
+    uv run ruff check .\units
+    uv run pylint .\units
+#### Static type analysis
+    uv run pyright .\units
+#### Formatting
+    uv run ruff format .\units .\tests
+
 ### Testing
-Pre-requisites
-- Docker (https://www.docker.com/)
-
-Steps
-1. Download the micropython unix port image, then run it as a new container, binding the units repo
-    
+Code that works in Python is not guaranteed to function the same (or at all) in micropython. As such tests should be run on the micropython unix port, using the micropython-variant of `unittest`.
+#### Pre-requisites
+- [Docker](https://www.docker.com/)
+#### Steps
+1. Download the micropython unix port image, then run it as a new container, binding the `micropython-units` repo
+    ```
     docker run -it --name micropython-units-testing --network=host --mount type=bind,source=<PATH_TO_LOCAL_MICROPYTHON_UNITS_REPO>,target=/home --entrypoint bash micropython/unix:latest
-
+    ```
 2. Navigate to the repo directory
-
+    ```
     cd ~/../home
-
+    ```
 3. Run micropython
-
+    ```
     micropython
-
-4. Install unittest & typing
-
+    ```
+4. Install the `unittest` & `typing` dependencies
+    ```
     import mip
 
     mip.install("unittest")
     mip.install("github:Josverl/micropython-stubs/mip/typing.py")
-
-5. Run unittests
-
+    ```
+5. Run unit tests
+    ```
     import unittest
     unittest.main("tests")
+    ```
+
+## Acknowledgements
+This library was heavily inspired by the [C# UnitsNet package](https://github.com/angularsen/UnitsNet).

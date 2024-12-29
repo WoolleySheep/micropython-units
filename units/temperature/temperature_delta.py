@@ -56,9 +56,9 @@ class TemperatureDelta:
             value_as_kelvin = self.as_unit(Unit.KELVIN)
             other_value_as_kelvin = other.as_unit(Unit.KELVIN)
             return value_as_kelvin / other_value_as_kelvin
-        else:
-            scaled_value = self._value / other
-            return TemperatureDelta(scaled_value, self._unit)
+
+        scaled_value = self._value / other
+        return TemperatureDelta(scaled_value, self._unit)
 
     def __add__(self, other: "TemperatureDelta") -> "TemperatureDelta":
         # This is here because the case of a TemperatureDelta + a Temperature is

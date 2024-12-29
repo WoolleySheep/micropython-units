@@ -7,7 +7,7 @@ from .info import UnitInfo
 from .unit import Unit
 
 # All info is entered here to create a SSoT
-_units_info: Final = [
+_UNITS_INFO: Final = [
     UnitInfo(
         unit=Unit.KELVIN,
         name="kelvin",
@@ -29,7 +29,7 @@ _units_info: Final = [
 ]
 
 # Convert into dictionary for quick lookup
-_unit_to_info_map: Final = {info.unit: info for info in _units_info}
+_UNIT_TO_INFO_MAP: Final = {info.unit: info for info in _UNITS_INFO}
 
 
 def get_name(unit: Unit) -> str:
@@ -38,7 +38,7 @@ def get_name(unit: Unit) -> str:
     Not intended for public use.
     """
     try:
-        return _unit_to_info_map[unit].name
+        return _UNIT_TO_INFO_MAP[unit].name
     except KeyError as e:
         raise ValueError from e
 
@@ -49,7 +49,7 @@ def get_abbreviation(unit: Unit) -> str:
     Not intended for public use.
     """
     try:
-        return _unit_to_info_map[unit].name
+        return _UNIT_TO_INFO_MAP[unit].name
     except KeyError as e:
         raise ValueError from e
 
@@ -62,6 +62,6 @@ def get_kelvin_to_unit_conversion_parameters(
     Not intended for public use.
     """
     try:
-        return _unit_to_info_map[unit].conversion_parameters
+        return _UNIT_TO_INFO_MAP[unit].conversion_parameters
     except KeyError as e:
         raise ValueError from e
