@@ -1,5 +1,7 @@
 """Module for the below absolute zero exception."""
 
+from typing import Any
+
 from units.temperature.unit import Unit, get_abbreviation
 
 
@@ -10,14 +12,22 @@ class BelowAbsoluteZeroError(ValueError):
     so a temperature less than this is impossible.
     """
 
-    def __init__(self, value: float, unit: Unit):
+    def __init__(
+        self,
+        value: float,
+        unit: Unit,
+        *args: tuple[Any, ...],
+        **kwargs: dict[str, Any],
+    ):
         self._value = value
         self._unit = unit
         super().__init__(
             (
                 f"Temperature [{value} {get_abbreviation(unit)}] cannot exist, "
                 "as this would be less than absolute zero (0 K)."
-            )
+            ),
+            *args,
+            **kwargs,
         )
 
     @property

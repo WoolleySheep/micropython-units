@@ -9,7 +9,7 @@ A lightweight library for working with physical quantities
     temp2_in_frt = temp2.as_unit(TemperatureUnit.FAHRENHEIT)  # 167
 
 ## Purpose
-Dealing with physical quantities in SW is tricky, because the same quantity can have different values depending on the unit used. While conventions exist to address this (such as using variable name postscripts that specify the unit, or adopting a single unit that all values should be converted to at the system boundary), these impose an additional cognitive load on developers. And when it goes wrong, wires get crossed and the Mars Climate Orbiter burns up because NASA uses metric while Lockheed Martin uses imperial.
+Dealing with physical quantities in SW is tricky, as the same quantity can have different values depending on the unit used. While conventions exist to address this (such as including units in variable/function names, or adopting a single unit that all physical quantities of a type should be converted to at the system boundary), these impose an additional cognitive load on developers. And when it goes wrong, wires get crossed and the Mars Climate Orbiter burns up because NASA uses metric while Lockheed Martin uses imperial.
 
 This library aims to remove the cognitive load of managing units, by making physical quantities unit-agnostic. Units are only considered during object instantiation, and when the developer explicitly requests the quantity in terms of a specific unit.
 

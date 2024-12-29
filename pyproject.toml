@@ -5,12 +5,10 @@ requires-python = ">=3.12"
 dependencies = []
 
 [dependency-groups]
-dev = [
-    "coverage>=7.6.10",
-    "pylint>=3.3.3",
-    "pyright>=1.1.391",
-    "ruff>=0.8.4",
-]
+dev = ["coverage>=7.6.10", "pylint>=3.3.3", "pyright>=1.1.391", "ruff>=0.8.4"]
 
 [tool.pylint.'MESSAGES CONTROL']
 disable = ["R0801"]
+
+[tool.pyright]
+typeCheckingMode = "strict"

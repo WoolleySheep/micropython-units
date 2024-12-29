@@ -1,5 +1,7 @@
 """Module for the negative pressure value exception."""
 
+from typing import Any
+
 
 class NegativePressureValueError(ValueError):
     """Raised when the pressure value is negative.
@@ -8,13 +10,20 @@ class NegativePressureValueError(ValueError):
     so a pressure with a negative value, regardless of the unit, is impossible.
     """
 
-    def __init__(self, value: float):
+    def __init__(
+        self,
+        value: float,
+        *args: tuple[Any, ...],
+        **kwargs: dict[str, Any],
+    ):
         self._value = value
         super().__init__(
             (
                 f"Pressure value [{value}] cannot be negative, "
                 "as this would produce a lower pressure than a perfect vacuum."
-            )
+            ),
+            *args,
+            **kwargs,
         )
 
     @property
