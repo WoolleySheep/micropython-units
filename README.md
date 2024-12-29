@@ -69,7 +69,7 @@ For more information see [the office package management resource](https://docs.m
 
 ### Testing
 #### Running unit tests on the micropython unix port
-Code that works in Python is not guaranteed to function the same (or at all) in micropython. As such tests should be run on the micropython unix port, using the micropython-variant of `unittest`.
+Code that runs in CPython is not guaranteed to function the same (or at all) in micropython. As such tests should be run on the micropython unix port, using the micropython-variant of `unittest`.
 ##### Pre-requisites
 - [Docker](https://www.docker.com/)
 ##### Steps
@@ -98,7 +98,7 @@ Code that works in Python is not guaranteed to function the same (or at all) in 
     unittest.main("tests")
     ```
 #### Test coverage report
-A test coverage report can be generated to ensure the unit tests are exercising the anticipated functionality. Note that the coverage module is designed for CPython, not micropython, so it may not be entirely accurate.
+A test coverage report can be generated to ensure the unit tests are exercising the anticipated functionality. The coverage module is designed for CPython, not micropython, so it may not be entirely accurate.
 ##### Pre-requisites
 - [uv](https://docs.astral.sh/uv/)
 ##### Steps
