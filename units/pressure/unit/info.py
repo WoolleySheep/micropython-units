@@ -16,6 +16,7 @@ class UnitInfo:
         abbreviation: str,
         unit_delta_per_pascal: float,
     ) -> None:
+        """Initialise a collection of info associated with a unit."""
         self._unit = unit
         self._name = name
         self._abbreviation = abbreviation
@@ -40,5 +41,6 @@ class UnitInfo:
     def unit_delta_per_pascal(self) -> float:
         """The change in pressure expressed as the unit per 1Pa.
 
-        Equivalent to the gradient of the pascal-vs-unit graph."""
+        Equivalent to the gradient of the pascal-vs-unit graph.
+        """
         return self._unit_delta_per_pascal

@@ -61,6 +61,31 @@ class TemperatureDeltaTest(unittest.TestCase):
         new_delta = abs(delta)
         self.assertAlmostEqual(1, new_delta.as_unit(TemperatureUnit.CELSIUS))
 
+    def test_floor_divide_temperature_delta_by_temperature_delta_produces_floored_ratio(
+        self,
+    ) -> None:
+        delta1 = TemperatureDelta(3, TemperatureUnit.CELSIUS)
+        delta2 = TemperatureDelta(2, TemperatureUnit.CELSIUS)
+        floored_ratio = delta1 // delta2
+        self.assertAlmostEqual(1, floored_ratio)
+
+    def test_modulo_temperature_delta_by_temperature_delta_produces_ratio_remainder(
+        self,
+    ) -> None:
+        delta1 = TemperatureDelta(3, TemperatureUnit.CELSIUS)
+        delta2 = TemperatureDelta(2, TemperatureUnit.CELSIUS)
+        remainder = delta1 % delta2
+        self.assertAlmostEqual(1, remainder)
+
+    def test_divmod_temperature_delta_by_temperature_delta_produces_floored_ratio_and_remainder(
+        self,
+    ) -> None:
+        delta1 = TemperatureDelta(3, TemperatureUnit.CELSIUS)
+        delta2 = TemperatureDelta(2, TemperatureUnit.CELSIUS)
+        floored_ratio, remainder = divmod(delta1, delta2)
+        self.assertAlmostEqual(1, floored_ratio)
+        self.assertAlmostEqual(1, remainder)
+
     def test_compare_temperature_deltas(self) -> None:
         for (
             temperature_delta1,

@@ -6,14 +6,14 @@ from .temperature import BelowAbsoluteZeroError, Temperature, TemperatureDelta
 from .temperature import Unit as TemperatureUnit
 
 __all__ = [
-    "temperature",
+    "BelowAbsoluteZeroError",
+    "NegativePressureValueError",
+    "Pressure",
+    "PressureDelta",
+    "PressureUnit",
     "Temperature",
     "TemperatureDelta",
     "TemperatureUnit",
     "pressure",
-    "Pressure",
-    "PressureDelta",
-    "PressureUnit",
-    "NegativePressureValueError",
-    "BelowAbsoluteZeroError",
+    "temperature",
 ]

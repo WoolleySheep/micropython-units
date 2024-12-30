@@ -17,6 +17,7 @@ class UnitInfo:
         abbreviation: str,
         conversion_parameters: UnitConversionParameters,
     ) -> None:
+        """Initialise a collection of info associated with a unit."""
         self._unit = unit
         self._name = name
         self._abbreviation = abbreviation

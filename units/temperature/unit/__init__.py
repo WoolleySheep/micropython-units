@@ -9,9 +9,9 @@ from .helpers import (
 from .unit import Unit
 
 __all__ = [
+    "Unit",
     "UnitConversionParameters",
     "get_abbreviation",
     "get_kelvin_to_unit_conversion_parameters",
     "get_name",
-    "Unit",
 ]

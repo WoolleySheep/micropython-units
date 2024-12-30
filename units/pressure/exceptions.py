@@ -1,4 +1,4 @@
-"""Module for the negative pressure value exception."""
+"""Module for pressure exceptions."""
 
 from typing import Any
 
@@ -15,7 +15,8 @@ class NegativePressureValueError(ValueError):
         value: float,
         *args: tuple[Any, ...],
         **kwargs: dict[str, Any],
-    ):
+    ) -> None:
+        """Initialise a new negative-pressure exception."""
         self._value = value
         super().__init__(
             (

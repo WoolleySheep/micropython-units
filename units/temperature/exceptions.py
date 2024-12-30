@@ -1,4 +1,4 @@
-"""Module for the below absolute zero exception."""
+"""Module for temperature exceptions."""
 
 from typing import Any
 
@@ -18,7 +18,8 @@ class BelowAbsoluteZeroError(ValueError):
         unit: Unit,
         *args: tuple[Any, ...],
         **kwargs: dict[str, Any],
-    ):
+    ) -> None:
+        """Initialise a new below-absolute-zero exception."""
         self._value = value
         self._unit = unit
         super().__init__(

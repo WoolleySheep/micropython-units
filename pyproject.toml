@@ -8,7 +8,12 @@ dependencies = []
 dev = ["coverage>=7.6.10", "pylint>=3.3.3", "pyright>=1.1.391", "ruff>=0.8.4"]
 
 [tool.pylint.'MESSAGES CONTROL']
+enable = ["all"]
 disable = ["R0801"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["PT009", "D203", "D213", "COM812", "ISC001"]
 
 [tool.pyright]
 typeCheckingMode = "strict"

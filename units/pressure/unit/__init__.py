@@ -10,8 +10,8 @@ from .unit import Unit
 
 __all__ = [
     "STANDARD_ATMOSPHERIC_PRESSURE_AS_PASCAL",
+    "Unit",
     "get_abbreviation",
     "get_name",
     "get_unit_delta_per_pascal",
-    "Unit",
 ]

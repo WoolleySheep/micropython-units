@@ -21,8 +21,8 @@
             "github:WoolleySheep/micropython-units/units/temperature/constants.py"
         ],
         [
-            "units/temperature/below_absolute_zero_error.py",
-            "github:WoolleySheep/micropython-units/units/temperature/below_absolute_zero_error.py"
+            "units/temperature/exceptions.py",
+            "github:WoolleySheep/micropython-units/units/temperature/exceptions.py"
         ],
         [
             "units/temperature/unit/__init__.py",
@@ -61,8 +61,8 @@
             "github:WoolleySheep/micropython-units/units/pressure/constants.py"
         ],
         [
-            "units/pressure/negative_pressure_value_error.py",
-            "github:WoolleySheep/micropython-units/units/pressure/negative_pressure_value_error.py"
+            "units/pressure/exceptions.py",
+            "github:WoolleySheep/micropython-units/units/pressure/exceptions.py"
         ],
         [
             "units/pressure/unit/__init__.py",
