@@ -1,5 +1,7 @@
 """Module for the time class."""
 
+# ruff: noqa: A005
+
 from typing import overload
 
 from .exceptions import NegativeTimeValueError
