@@ -24,7 +24,6 @@ class TimeTest(unittest.TestCase):
             (TimeUnit.SECOND, 1),
             (TimeUnit.MINUTE, 1 / 60),
             (TimeUnit.HOUR, 1 / (60 * 60)),
-            (TimeUnit.NANOSECOND, 1e9),
             (TimeUnit.MICROSECOND, 1e6),
             (TimeUnit.MILLISECOND, 1e3),
         ]:

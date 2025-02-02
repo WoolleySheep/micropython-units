@@ -46,6 +46,8 @@ Unit-agnostic manipulation & comparison of physical quantities is also supported
 ## Physical quantities supported (more to follow)
 - Pressure
 - Temperature
+- Volume
+- Time
 
 ## For users
 ### How to install

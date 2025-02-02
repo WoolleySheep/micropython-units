@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from units.temperature.unit import Unit, get_abbreviation
+from .unit import Unit, get_abbreviation
 
 
 class BelowAbsoluteZeroError(ValueError):

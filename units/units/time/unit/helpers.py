@@ -26,12 +26,6 @@ _UNITS_INFO: Final = [
         unit_delta_per_second=1 / (60 * 60),
     ),
     UnitInfo(
-        unit=Unit.NANOSECOND,
-        name="nanosecond",
-        abbreviation="ns",
-        unit_delta_per_second=1e9,
-    ),
-    UnitInfo(
         unit=Unit.MICROSECOND,
         name="microsecond",
         abbreviation="us",

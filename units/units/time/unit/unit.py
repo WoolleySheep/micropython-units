@@ -23,6 +23,5 @@ class Unit(IntEnum):
     SECOND = 1
     MINUTE = 2
     HOUR = 3
-    NANOSECOND = 4
-    MICROSECOND = 5
-    MILLISECOND = 6
+    MICROSECOND = 4
+    MILLISECOND = 5

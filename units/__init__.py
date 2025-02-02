@@ -8,6 +8,7 @@ from .time import NegativeTimeValueError, Time, TimeDelta
 from .time import Unit as TimeUnit
 from .volume import NegativeVolumeValueError, Volume, VolumeDelta
 from .volume import Unit as VolumeUnit
+from .volumetric_flow_rate import VolumetricFlowRate, ZeroTimeIntervalDivisionError
 
 __all__ = [
     "BelowAbsoluteZeroError",
@@ -26,8 +27,11 @@ __all__ = [
     "Volume",
     "VolumeDelta",
     "VolumeUnit",
+    "VolumetricFlowRate",
+    "ZeroTimeIntervalDivisionError",
     "pressure",
     "temperature",
     "time",
     "volume",
+    "volumetric_flow_rate",
 ]

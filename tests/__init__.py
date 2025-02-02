@@ -17,6 +17,7 @@ from .time import TimeAndTimeDeltaTest, TimeDeltaTest, TimeTest
 from .time import ZeroTest as TimeZeroTest
 from .volume import VolumeAndVolumeDeltaTest, VolumeDeltaTest, VolumeTest
 from .volume import ZeroTest as VolumeZeroTest
+from .volumetric_flow_rate import VolumetricFlowRateTest
 
 __all__ = [
     "AbsoluteZeroTest",
@@ -36,4 +37,5 @@ __all__ = [
     "VolumeDeltaTest",
     "VolumeTest",
     "VolumeZeroTest",
+    "VolumetricFlowRateTest",
 ]
