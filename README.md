@@ -11,6 +11,9 @@ A lightweight library for working with physical quantities
 ## Purpose
 Dealing with physical quantities in SW is tricky, as the same quantity can have different values depending on the unit used. While conventions exist to address this (such as including units in variable/function names, or adopting a single unit that all physical quantities of a type should be converted to at the system boundary), these impose an additional cognitive load on developers. And when it goes wrong, wires get crossed and the Mars Climate Orbiter burns up because NASA uses metric while Lockheed Martin uses imperial.
 
+## Implementation
+
+### High-level
 This library aims to remove the cognitive load of managing units, by making physical quantities unit-agnostic. Units are only considered during object instantiation, and when the developer explicitly requests the quantity in terms of a specific unit.
 
     # Physical quantity enters the system and is immediately converted to a unit-agnostic form
@@ -28,6 +31,7 @@ This library aims to remove the cognitive load of managing units, by making phys
     pressure_in_psi = pressure.as_unit(PressureUnit.POUND_PER_SQUARE_INCH)   # 14.8098...
     external_function_requiring_psi(pressure_in_psi)
 
+### Physical quantities
 Unit-agnostic manipulation & comparison of physical quantities is also supported through a pair of classes for each quantity type; `PHYSICAL_QUANTITY` and `PHYSICAL_QUANTITY_Delta`. This approach is inspired by `datetime` and `timedelta` in CPython. This allows for arbitrarily large/small/negative differences, while ensuring that the physical quantities themselves always make sense.
 
     pressure1 = read_pressure_sensor()   # Pressure(1.1, PressureUnit.ATMOSPHERE)
@@ -42,12 +46,20 @@ Unit-agnostic manipulation & comparison of physical quantities is also supported
     _ = TemperatureDelta(-400, TemperatureUnit.CELSIUS) # This is perfectly valid, as one temperature can be 400 degrees less than another
     _ = Temperature(-400, TemperatureUNIT.CELSIUS)   # This will throw an exception, as it's less than absolute zero and breaks physics
 
+### Rates of change
+Often the rate at which a physical quantity is changing is what is of interest. Rates of change are similar to `PHYSICAL_QUANTITY_Delta` classes but they take an extra `TimeDelta` parameter in their constructor.
 
-## Physical quantities supported (more to follow)
-- Pressure
-- Temperature
-- Volume
-- Time
+    current_flow_rate = VolumetricFlowRate(5.5, VolumeUnit.MILLILITER, TimeUnit.MINUTE)
+    set_pump_speed(current_flow_rate)
+
+## Units supported supported (more to follow)
+- Physical quantities
+    - Pressure
+    - Temperature
+    - Volume
+    - Time
+- Rates of change
+    - Volumetric Flow Rate
 
 ## For users
 ### How to install
