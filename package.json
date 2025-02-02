@@ -115,6 +115,42 @@
         [
             "units/volume/unit/unit.py",
             "github:WoolleySheep/micropython-units/units/volume/unit/unit.py"
+        ],
+        [
+            "units/time/__init__.py",
+            "github:WoolleySheep/micropython-units/units/time/__init__.py"
+        ],
+        [
+            "units/time/time.py",
+            "github:WoolleySheep/micropython-units/units/time/time.py"
+        ],
+        [
+            "units/time/time_delta.py",
+            "github:WoolleySheep/micropython-units/units/time/time_delta.py"
+        ],
+        [
+            "units/time/constants.py",
+            "github:WoolleySheep/micropython-units/units/time/constants.py"
+        ],
+        [
+            "units/time/exceptions.py",
+            "github:WoolleySheep/micropython-units/units/time/exceptions.py"
+        ],
+        [
+            "units/time/unit/__init__.py",
+            "github:WoolleySheep/micropython-units/units/time/unit/__init__.py"
+        ],
+        [
+            "units/time/unit/helpers.py",
+            "github:WoolleySheep/micropython-units/units/time/unit/helpers.py"
+        ],
+        [
+            "units/time/unit/info.py",
+            "github:WoolleySheep/micropython-units/units/time/unit/info.py"
+        ],
+        [
+            "units/time/unit/unit.py",
+            "github:WoolleySheep/micropython-units/units/time/unit/unit.py"
         ]
     ],
     "deps": [

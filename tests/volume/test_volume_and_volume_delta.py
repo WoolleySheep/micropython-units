@@ -6,7 +6,7 @@ from units import Volume, VolumeDelta, VolumeUnit
 class VolumeAndVolumeDeltaTest(unittest.TestCase):
     """Unit tests for interactions between volume and volume delta classes."""
 
-    def test_add_volume_delta_to_volume_produces_Volume(self) -> None:
+    def test_add_volume_delta_to_volume_produces_volume(self) -> None:
         volume = Volume(0, VolumeUnit.CUBIC_METER)
         delta = VolumeDelta(1, VolumeUnit.CUBIC_METER)
         new_volume_left_add = volume + delta
@@ -16,7 +16,7 @@ class VolumeAndVolumeDeltaTest(unittest.TestCase):
         self.assertIsInstance(new_volume_right_add, Volume)
         self.assertAlmostEqual(1, new_volume_right_add.as_unit(VolumeUnit.CUBIC_METER))
 
-    def test_subtract_volume_delta_from_volume_produces_Volume(
+    def test_subtract_volume_delta_from_volume_produces_volume(
         self,
     ) -> None:
         volume = Volume(1, VolumeUnit.CUBIC_METER)

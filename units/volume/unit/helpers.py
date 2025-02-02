@@ -17,19 +17,19 @@ _UNITS_INFO: Final = [
         unit=Unit.LITRE,
         name="litre",
         abbreviation="L",
-        unit_delta_per_cubic_meter=1_000,
+        unit_delta_per_cubic_meter=1e3,
     ),
     UnitInfo(
         unit=Unit.MILLILITRE,
         name="millilitre",
         abbreviation="mL",
-        unit_delta_per_cubic_meter=1_000_000,
+        unit_delta_per_cubic_meter=1e6,
     ),
     UnitInfo(
         unit=Unit.MICROLITRE,
         name="microlitre",
         abbreviation="uL",
-        unit_delta_per_cubic_meter=1_000_000_000,
+        unit_delta_per_cubic_meter=1e9,
     ),
 ]
 
