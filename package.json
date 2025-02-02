@@ -79,6 +79,42 @@
         [
             "units/pressure/unit/unit.py",
             "github:WoolleySheep/micropython-units/units/pressure/unit/unit.py"
+        ],
+        [
+            "units/volume/__init__.py",
+            "github:WoolleySheep/micropython-units/units/volume/__init__.py"
+        ],
+        [
+            "units/volume/volume.py",
+            "github:WoolleySheep/micropython-units/units/volume/volume.py"
+        ],
+        [
+            "units/volume/volume_delta.py",
+            "github:WoolleySheep/micropython-units/units/volume/volume_delta.py"
+        ],
+        [
+            "units/volume/constants.py",
+            "github:WoolleySheep/micropython-units/units/volume/constants.py"
+        ],
+        [
+            "units/volume/exceptions.py",
+            "github:WoolleySheep/micropython-units/units/volume/exceptions.py"
+        ],
+        [
+            "units/volume/unit/__init__.py",
+            "github:WoolleySheep/micropython-units/units/volume/unit/__init__.py"
+        ],
+        [
+            "units/volume/unit/helpers.py",
+            "github:WoolleySheep/micropython-units/units/volume/unit/helpers.py"
+        ],
+        [
+            "units/volume/unit/info.py",
+            "github:WoolleySheep/micropython-units/units/volume/unit/info.py"
+        ],
+        [
+            "units/volume/unit/unit.py",
+            "github:WoolleySheep/micropython-units/units/volume/unit/unit.py"
         ]
     ],
     "deps": [
