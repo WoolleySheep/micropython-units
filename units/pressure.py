@@ -1,6 +1,6 @@
 """Module for grouping pressure-related classes and constants."""
 
-from .units.pressure import (
+from .units_inner.pressure import (
     PERFECT_VACUUM,
     STANDARD_ATMOSPHERE,
     NegativePressureValueError,

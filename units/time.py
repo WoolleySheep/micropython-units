@@ -2,6 +2,6 @@
 
 # ruff: noqa: A005
 
-from .units.time import ZERO, NegativeTimeValueError, Time, TimeDelta, Unit
+from .units_inner.time import ZERO, NegativeTimeValueError, Time, TimeDelta, Unit
 
 __all__ = ["ZERO", "NegativeTimeValueError", "Time", "TimeDelta", "Unit"]

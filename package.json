@@ -26,167 +26,167 @@
         ],
         [
             "units/units/__init__.py",
-            "github:WoolleySheep/micropython-units/units/units/__init__.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/__init__.py"
         ],
         [
             "units/units/temperature/__init__.py",
-            "github:WoolleySheep/micropython-units/units/units/temperature/__init__.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/temperature/__init__.py"
         ],
         [
             "units/units/temperature/temperature.py",
-            "github:WoolleySheep/micropython-units/units/units/temperature/temperature.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/temperature/temperature.py"
         ],
         [
             "units/units/temperature/temperature_delta.py",
-            "github:WoolleySheep/micropython-units/units/units/temperature/temperature_delta.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/temperature/temperature_delta.py"
         ],
         [
             "units/units/temperature/constants.py",
-            "github:WoolleySheep/micropython-units/units/units/temperature/constants.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/temperature/constants.py"
         ],
         [
             "units/units/temperature/exceptions.py",
-            "github:WoolleySheep/micropython-units/units/units/temperature/exceptions.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/temperature/exceptions.py"
         ],
         [
             "units/units/temperature/unit/__init__.py",
-            "github:WoolleySheep/micropython-units/units/units/temperature/unit/__init__.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/temperature/unit/__init__.py"
         ],
         [
             "units/units/temperature/unit/conversion_parameters.py",
-            "github:WoolleySheep/micropython-units/units/units/temperature/unit/conversion_parameters.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/temperature/unit/conversion_parameters.py"
         ],
         [
             "units/units/temperature/unit/helpers.py",
-            "github:WoolleySheep/micropython-units/units/units/temperature/unit/helpers.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/temperature/unit/helpers.py"
         ],
         [
             "units/units/temperature/unit/info.py",
-            "github:WoolleySheep/micropython-units/units/units/temperature/unit/info.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/temperature/unit/info.py"
         ],
         [
             "units/units/temperature/unit/unit.py",
-            "github:WoolleySheep/micropython-units/units/units/temperature/unit/unit.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/temperature/unit/unit.py"
         ],
         [
             "units/units/pressure/__init__.py",
-            "github:WoolleySheep/micropython-units/units/units/pressure/__init__.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/pressure/__init__.py"
         ],
         [
             "units/units/pressure/pressure.py",
-            "github:WoolleySheep/micropython-units/units/units/pressure/pressure.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/pressure/pressure.py"
         ],
         [
             "units/units/pressure/pressure_delta.py",
-            "github:WoolleySheep/micropython-units/units/units/pressure/pressure_delta.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/pressure/pressure_delta.py"
         ],
         [
             "units/units/pressure/constants.py",
-            "github:WoolleySheep/micropython-units/units/units/pressure/constants.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/pressure/constants.py"
         ],
         [
             "units/units/pressure/exceptions.py",
-            "github:WoolleySheep/micropython-units/units/units/pressure/exceptions.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/pressure/exceptions.py"
         ],
         [
             "units/units/pressure/unit/__init__.py",
-            "github:WoolleySheep/micropython-units/units/units/pressure/unit/__init__.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/pressure/unit/__init__.py"
         ],
         [
             "units/units/pressure/unit/helpers.py",
-            "github:WoolleySheep/micropython-units/units/units/pressure/unit/helpers.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/pressure/unit/helpers.py"
         ],
         [
             "units/units/pressure/unit/info.py",
-            "github:WoolleySheep/micropython-units/units/units/pressure/unit/info.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/pressure/unit/info.py"
         ],
         [
             "units/units/pressure/unit/unit.py",
-            "github:WoolleySheep/micropython-units/units/units/pressure/unit/unit.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/pressure/unit/unit.py"
         ],
         [
             "units/units/volume/__init__.py",
-            "github:WoolleySheep/micropython-units/units/units/volume/__init__.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volume/__init__.py"
         ],
         [
             "units/units/volume/volume.py",
-            "github:WoolleySheep/micropython-units/units/units/volume/volume.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volume/volume.py"
         ],
         [
             "units/units/volume/volume_delta.py",
-            "github:WoolleySheep/micropython-units/units/units/volume/volume_delta.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volume/volume_delta.py"
         ],
         [
             "units/units/volume/constants.py",
-            "github:WoolleySheep/micropython-units/units/units/volume/constants.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volume/constants.py"
         ],
         [
             "units/units/volume/exceptions.py",
-            "github:WoolleySheep/micropython-units/units/units/volume/exceptions.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volume/exceptions.py"
         ],
         [
             "units/units/volume/unit/__init__.py",
-            "github:WoolleySheep/micropython-units/units/units/volume/unit/__init__.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volume/unit/__init__.py"
         ],
         [
             "units/units/volume/unit/helpers.py",
-            "github:WoolleySheep/micropython-units/units/units/volume/unit/helpers.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volume/unit/helpers.py"
         ],
         [
             "units/units/volume/unit/info.py",
-            "github:WoolleySheep/micropython-units/units/units/volume/unit/info.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volume/unit/info.py"
         ],
         [
             "units/units/volume/unit/unit.py",
-            "github:WoolleySheep/micropython-units/units/units/volume/unit/unit.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volume/unit/unit.py"
         ],
         [
             "units/units/time/__init__.py",
-            "github:WoolleySheep/micropython-units/units/units/time/__init__.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/time/__init__.py"
         ],
         [
             "units/units/time/time.py",
-            "github:WoolleySheep/micropython-units/units/units/time/time.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/time/time.py"
         ],
         [
             "units/units/time/time_delta.py",
-            "github:WoolleySheep/micropython-units/units/units/time/time_delta.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/time/time_delta.py"
         ],
         [
             "units/units/time/constants.py",
-            "github:WoolleySheep/micropython-units/units/units/time/constants.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/time/constants.py"
         ],
         [
             "units/units/time/exceptions.py",
-            "github:WoolleySheep/micropython-units/units/units/time/exceptions.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/time/exceptions.py"
         ],
         [
             "units/units/time/unit/__init__.py",
-            "github:WoolleySheep/micropython-units/units/units/time/unit/__init__.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/time/unit/__init__.py"
         ],
         [
             "units/units/time/unit/helpers.py",
-            "github:WoolleySheep/micropython-units/units/units/time/unit/helpers.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/time/unit/helpers.py"
         ],
         [
             "units/units/time/unit/info.py",
-            "github:WoolleySheep/micropython-units/units/units/time/unit/info.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/time/unit/info.py"
         ],
         [
             "units/units/time/unit/unit.py",
-            "github:WoolleySheep/micropython-units/units/units/time/unit/unit.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/time/unit/unit.py"
         ],
         [
             "units/units/volumetric_flow_rate/__init__.py",
-            "github:WoolleySheep/micropython-units/units/units/volumetric_flow_rate/__init__.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volumetric_flow_rate/__init__.py"
         ],
         [
             "units/units/volumetric_flow_rate/exceptions.py",
-            "github:WoolleySheep/micropython-units/units/units/volumetric_flow_rate/exceptions.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volumetric_flow_rate/exceptions.py"
         ],
         [
             "units/units/volumetric_flow_rate/volumetric_flow_rate.py",
-            "github:WoolleySheep/micropython-units/units/units/volumetric_flow_rate/volumetric_flow_rate.py"
+            "github:WoolleySheep/micropython-units/units/units_inner/volumetric_flow_rate/volumetric_flow_rate.py"
         ]
     ],
     "deps": [

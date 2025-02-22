@@ -1,6 +1,6 @@
 """Module for grouping temperature-related classes and constants."""
 
-from .units.temperature import (
+from .units_inner.temperature import (
     ABSOLUTE_ZERO,
     BelowAbsoluteZeroError,
     Temperature,
