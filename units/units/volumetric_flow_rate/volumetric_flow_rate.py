@@ -4,8 +4,6 @@
 
 from typing import overload
 
-from units.units.volumetric_flow_rate.exceptions import ZeroTimeIntervalDivisionError
-
 from ..time import TimeDelta
 from ..time import Unit as TimeUnit
 from ..time import get_unit_abbreviation as get_time_unit_abbreviation
@@ -18,6 +16,7 @@ from ..volume import (
     get_unit_delta_per_cubic_meter as get_volume_unit_delta_per_cubic_meter,
 )
 from ..volume import get_unit_name as get_volume_unit_name
+from .exceptions import ZeroTimeIntervalDivisionError
 
 
 class VolumetricFlowRate:
