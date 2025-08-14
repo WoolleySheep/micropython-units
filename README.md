@@ -62,6 +62,7 @@ set_pump_speed(current_flow_rate)
     - Pressure
     - Temperature
     - Volume
+    - Mass
     - Time
 - Rates of change
     - Volumetric Flow Rate
