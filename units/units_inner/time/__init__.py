@@ -1,7 +1,5 @@
 """Package for time-related classes and constants."""
 
-# ruff: noqa: A005
-
 from .constants import ZERO
 from .exceptions import NegativeTimeValueError
 from .time import Time
