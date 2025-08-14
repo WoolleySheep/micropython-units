@@ -1,5 +1,7 @@
 """Package for unit tests of physical quantity classes."""
 
+from .mass import MassAndMassDeltaTest, MassDeltaTest, MassTest
+from .mass import ZeroTest as MassZeroTest
 from .pressure import (
     PerfectVacuumTest,
     PressureAndPressureDeltaTest,
@@ -37,5 +39,9 @@ __all__ = [
     "VolumeDeltaTest",
     "VolumeTest",
     "VolumeZeroTest",
+    "MassAndMassDeltaTest",
+    "MassDeltaTest",
+    "MassTest",
+    "MassZeroTest",
     "VolumetricFlowRateTest",
 ]

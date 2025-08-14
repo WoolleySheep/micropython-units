@@ -1,5 +1,7 @@
 """Package for physical quantity modules and classes."""
 
+from .mass import Mass, MassDelta, NegativeMassValueError
+from .mass import Unit as MassUnit
 from .pressure import NegativePressureValueError, Pressure, PressureDelta
 from .pressure import Unit as PressureUnit
 from .temperature import BelowAbsoluteZeroError, Temperature, TemperatureDelta
@@ -12,6 +14,10 @@ from .volumetric_flow_rate import VolumetricFlowRate, ZeroTimeIntervalDivisionEr
 
 __all__ = [
     "BelowAbsoluteZeroError",
+    "Mass",
+    "MassDelta",
+    "MassUnit",
+    "NegativeMassValueError",
     "NegativePressureValueError",
     "NegativeTimeValueError",
     "NegativeVolumeValueError",

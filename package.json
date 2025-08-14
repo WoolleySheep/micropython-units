@@ -21,6 +21,10 @@
             "github:WoolleySheep/micropython-units/units/volume.py"
         ],
         [
+            "units/mass.py",
+            "github:WoolleySheep/micropython-units/units/mass.py"
+        ],
+        [
             "units/volumetric_flow_rate.py",
             "github:WoolleySheep/micropython-units/units/volumetric_flow_rate.py"
         ],
@@ -139,6 +143,42 @@
         [
             "units/units_inner/volume/unit/unit.py",
             "github:WoolleySheep/micropython-units/units/units_inner/volume/unit/unit.py"
+        ],
+        [
+            "units/units_inner/mass/__init__.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/mass/__init__.py"
+        ],
+        [
+            "units/units_inner/mass/mass.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/mass/mass.py"
+        ],
+        [
+            "units/units_inner/mass/mass_delta.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/mass/mass_delta.py"
+        ],
+        [
+            "units/units_inner/mass/constants.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/mass/constants.py"
+        ],
+        [
+            "units/units_inner/mass/exceptions.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/mass/exceptions.py"
+        ],
+        [
+            "units/units_inner/mass/unit/__init__.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/mass/unit/__init__.py"
+        ],
+        [
+            "units/units_inner/mass/unit/helpers.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/mass/unit/helpers.py"
+        ],
+        [
+            "units/units_inner/mass/unit/info.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/mass/unit/info.py"
+        ],
+        [
+            "units/units_inner/mass/unit/unit.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/mass/unit/unit.py"
         ],
         [
             "units/units_inner/time/__init__.py",
