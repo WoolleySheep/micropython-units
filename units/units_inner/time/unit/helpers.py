@@ -60,7 +60,7 @@ def get_abbreviation(unit: Unit) -> str:
     Not intended for public use.
     """
     try:
-        return _UNIT_TO_INFO_MAP[unit].name
+        return _UNIT_TO_INFO_MAP[unit].abbreviation
     except KeyError as e:
         raise ValueError from e
 

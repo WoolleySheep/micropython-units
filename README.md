@@ -89,6 +89,7 @@ For more information see [the office package management resource](https://docs.m
     uv run ruff format .\units .\tests
 #### Updating dependencies
     uv lock --upgrade
+    uv sync
 
 ### Testing
 #### Running unit tests on the micropython unix port
