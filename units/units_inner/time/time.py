@@ -67,9 +67,10 @@ class Time:
 
     def __eq__(self, other: object) -> bool:
         """Return whether the objects are equal times."""
-        return isinstance(other, Time) and self.as_unit(
-            Unit.SECOND,
-        ) == other.as_unit(Unit.SECOND)
+        if not isinstance(other, Time):
+            return NotImplemented
+
+        return self.as_unit(Unit.SECOND) == other.as_unit(Unit.SECOND)
 
     def __lt__(self, other: "Time") -> bool:
         """Return whether the time is less than the other."""

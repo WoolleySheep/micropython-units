@@ -87,9 +87,10 @@ class Temperature:
 
     def __eq__(self, other: object) -> bool:
         """Return whether the objects are equal temperatures."""
-        return isinstance(other, Temperature) and self.as_unit(
-            Unit.KELVIN,
-        ) == other.as_unit(Unit.KELVIN)
+        if not isinstance(other, Temperature):
+            return NotImplemented
+
+        return self.as_unit(Unit.KELVIN) == other.as_unit(Unit.KELVIN)
 
     def __lt__(self, other: "Temperature") -> bool:
         """Return whether the temperature is less than the other."""

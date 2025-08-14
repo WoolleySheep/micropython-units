@@ -6,7 +6,7 @@ from .unit import (
     Unit,
     get_abbreviation,
     get_name,
-    get_unit_delta_per_cubic_meter,
+    get_unit_delta_per_cubic_metre,
 )
 
 
@@ -20,10 +20,10 @@ class VolumeDelta:
 
     def as_unit(self, unit: Unit) -> float:
         """Get the volume difference, expressed as the unit."""
-        internal_unit_delta_per_pascal = get_unit_delta_per_cubic_meter(self._unit)
-        value_as_cubic_meter = self._value / internal_unit_delta_per_pascal
-        external_unit_delta_per_pascal = get_unit_delta_per_cubic_meter(unit)
-        return external_unit_delta_per_pascal * value_as_cubic_meter
+        internal_unit_delta_per_cubic_metre = get_unit_delta_per_cubic_metre(self._unit)
+        value_as_cubic_metre = self._value / internal_unit_delta_per_cubic_metre
+        external_unit_delta_per_cubic_metre = get_unit_delta_per_cubic_metre(unit)
+        return external_unit_delta_per_cubic_metre * value_as_cubic_metre
 
     def __mul__(self, value: float) -> "VolumeDelta":
         """Return a volume difference scaled by the value."""
@@ -50,9 +50,9 @@ class VolumeDelta:
           differences
         """
         if isinstance(other, VolumeDelta):
-            value_as_cubic_meter = self.as_unit(Unit.CUBIC_METER)
-            other_value_as_cubic_meter = other.as_unit(Unit.CUBIC_METER)
-            return value_as_cubic_meter / other_value_as_cubic_meter
+            value_as_cubic_metre = self.as_unit(Unit.CUBIC_METRE)
+            other_value_as_cubic_metre = other.as_unit(Unit.CUBIC_METRE)
+            return value_as_cubic_metre / other_value_as_cubic_metre
 
         scaled_value = self._value / other
         return VolumeDelta(scaled_value, self._unit)
@@ -65,10 +65,10 @@ class VolumeDelta:
         if not isinstance(other, VolumeDelta):  # type: ignore[reportUnnecessaryIsInstance]
             return NotImplemented
 
-        value_as_cubic_meter = self.as_unit(Unit.CUBIC_METER)
-        delta_value_as_cubic_meter = other.as_unit(Unit.CUBIC_METER)
-        added_value_as_cubic_meter = value_as_cubic_meter + delta_value_as_cubic_meter
-        return VolumeDelta(added_value_as_cubic_meter, Unit.CUBIC_METER)
+        value_as_cubic_metre = self.as_unit(Unit.CUBIC_METRE)
+        delta_value_as_cubic_metre = other.as_unit(Unit.CUBIC_METRE)
+        added_value_as_cubic_metre = value_as_cubic_metre + delta_value_as_cubic_metre
+        return VolumeDelta(added_value_as_cubic_metre, Unit.CUBIC_METRE)
 
     def __sub__(self, delta: "VolumeDelta") -> "VolumeDelta":
         """Return the difference between the volume differences."""
@@ -86,50 +86,51 @@ class VolumeDelta:
 
     def __floordiv__(self, other: "VolumeDelta") -> float:
         """Return the floored ratio between the volume differences."""
-        value_as_cubic_meter = self.as_unit(Unit.CUBIC_METER)
-        other_value_as_cubic_meter = other.as_unit(Unit.CUBIC_METER)
-        return value_as_cubic_meter // other_value_as_cubic_meter
+        value_as_cubic_metre = self.as_unit(Unit.CUBIC_METRE)
+        other_value_as_cubic_metre = other.as_unit(Unit.CUBIC_METRE)
+        return value_as_cubic_metre // other_value_as_cubic_metre
 
     def __mod__(self, other: "VolumeDelta") -> float:
         """Return the remainder of the ratio between the volume differences."""
-        value_as_cubic_meter = self.as_unit(Unit.CUBIC_METER)
-        other_value_as_cubic_meter = other.as_unit(Unit.CUBIC_METER)
-        return value_as_cubic_meter % other_value_as_cubic_meter
+        value_as_cubic_metre = self.as_unit(Unit.CUBIC_METRE)
+        other_value_as_cubic_metre = other.as_unit(Unit.CUBIC_METRE)
+        return value_as_cubic_metre % other_value_as_cubic_metre
 
     def __divmod__(self, other: "VolumeDelta") -> tuple[float, float]:
         """Return the quotient & remainder of the ratio between the volume deltas."""
-        value_as_cubic_meter = self.as_unit(Unit.CUBIC_METER)
-        other_value_as_cubic_meter = other.as_unit(Unit.CUBIC_METER)
-        return divmod(value_as_cubic_meter, other_value_as_cubic_meter)
+        value_as_cubic_metre = self.as_unit(Unit.CUBIC_METRE)
+        other_value_as_cubic_metre = other.as_unit(Unit.CUBIC_METRE)
+        return divmod(value_as_cubic_metre, other_value_as_cubic_metre)
 
     def __eq__(self, other: object) -> bool:
         """Return whether the objects are equal volume differences."""
-        return isinstance(other, VolumeDelta) and self.as_unit(
-            Unit.CUBIC_METER,
-        ) == other.as_unit(Unit.CUBIC_METER)
+        if not isinstance(other, VolumeDelta):
+            return NotImplemented
+
+        return self.as_unit(Unit.CUBIC_METRE) == other.as_unit(Unit.CUBIC_METRE)
 
     def __lt__(self, other: "VolumeDelta") -> bool:
         """Return whether the volume difference is less than the other."""
-        return self.as_unit(Unit.CUBIC_METER) < other.as_unit(Unit.CUBIC_METER)
+        return self.as_unit(Unit.CUBIC_METRE) < other.as_unit(Unit.CUBIC_METRE)
 
     def __le__(self, other: "VolumeDelta") -> bool:
         """Return whether the volume delta is less than or equal to the other."""
-        return self.as_unit(Unit.CUBIC_METER) <= other.as_unit(Unit.CUBIC_METER)
+        return self.as_unit(Unit.CUBIC_METRE) <= other.as_unit(Unit.CUBIC_METRE)
 
     def __gt__(self, other: "VolumeDelta") -> bool:
         """Return whether the volume difference is greater than the other."""
-        return self.as_unit(Unit.CUBIC_METER) > other.as_unit(Unit.CUBIC_METER)
+        return self.as_unit(Unit.CUBIC_METRE) > other.as_unit(Unit.CUBIC_METRE)
 
     def __ge__(self, other: "VolumeDelta") -> bool:
         """Return whether the volume delta is greater than or equal to the other."""
-        return self.as_unit(Unit.CUBIC_METER) >= other.as_unit(Unit.CUBIC_METER)
+        return self.as_unit(Unit.CUBIC_METRE) >= other.as_unit(Unit.CUBIC_METRE)
 
     def __hash__(self) -> int:
         """Return the hash of the volume difference.
 
         NB: Exercise the usual caution around a hash of a floating point number.
         """
-        return hash(self.as_unit(Unit.CUBIC_METER))
+        return hash(self.as_unit(Unit.CUBIC_METRE))
 
     def __str__(self) -> str:
         """Return a string representation of the volume difference."""

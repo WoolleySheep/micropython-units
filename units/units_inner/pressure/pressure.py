@@ -67,9 +67,10 @@ class Pressure:
 
     def __eq__(self, other: object) -> bool:
         """Return whether the objects are equal pressures."""
-        return isinstance(other, Pressure) and self.as_unit(
-            Unit.PASCAL,
-        ) == other.as_unit(Unit.PASCAL)
+        if not isinstance(other, Pressure):
+            return NotImplemented
+
+        return self.as_unit(Unit.PASCAL) == other.as_unit(Unit.PASCAL)
 
     def __lt__(self, other: "Pressure") -> bool:
         """Return whether the pressure is less than the other."""

@@ -104,9 +104,10 @@ class MassDelta:
 
     def __eq__(self, other: object) -> bool:
         """Return whether the objects are equal mass differences."""
-        return isinstance(other, MassDelta) and self.as_unit(
-            Unit.KILOGRAM,
-        ) == other.as_unit(Unit.KILOGRAM)
+        if not isinstance(other, MassDelta):
+            return NotImplemented
+
+        return self.as_unit(Unit.KILOGRAM) == other.as_unit(Unit.KILOGRAM)
 
     def __lt__(self, other: "MassDelta") -> bool:
         """Return whether the mass difference is less than the other."""

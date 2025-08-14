@@ -2,7 +2,7 @@
 
 from .constants import ZERO
 from .exceptions import NegativeVolumeValueError
-from .unit import Unit, get_unit_delta_per_cubic_meter
+from .unit import Unit, get_unit_delta_per_cubic_metre
 from .unit import get_abbreviation as get_unit_abbreviation
 from .unit import get_name as get_unit_name
 from .volume import Volume
@@ -15,6 +15,6 @@ __all__ = [
     "Volume",
     "VolumeDelta",
     "get_unit_abbreviation",
-    "get_unit_delta_per_cubic_meter",
+    "get_unit_delta_per_cubic_metre",
     "get_unit_name",
 ]

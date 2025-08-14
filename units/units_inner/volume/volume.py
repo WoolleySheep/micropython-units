@@ -7,7 +7,7 @@ from .unit import (
     Unit,
     get_abbreviation,
     get_name,
-    get_unit_delta_per_cubic_meter,
+    get_unit_delta_per_cubic_metre,
 )
 from .volume_delta import VolumeDelta
 
@@ -25,17 +25,17 @@ class Volume:
 
     def as_unit(self, unit: Unit) -> float:
         """Get the volume, expressed as the unit."""
-        internal_unit_delta_per_cubic_meter = get_unit_delta_per_cubic_meter(self._unit)
-        value_as_cubic_meter = self._value / internal_unit_delta_per_cubic_meter
-        external_unit_delta_per_cubic_meter = get_unit_delta_per_cubic_meter(unit)
-        return external_unit_delta_per_cubic_meter * value_as_cubic_meter
+        internal_unit_delta_per_cubic_metre = get_unit_delta_per_cubic_metre(self._unit)
+        value_as_cubic_metre = self._value / internal_unit_delta_per_cubic_metre
+        external_unit_delta_per_cubic_metre = get_unit_delta_per_cubic_metre(unit)
+        return external_unit_delta_per_cubic_metre * value_as_cubic_metre
 
     def __add__(self, delta: VolumeDelta) -> "Volume":
         """Return the sum of the volume and the difference."""
-        value_as_cubic_meter = self.as_unit(Unit.CUBIC_METER)
-        delta_value_as_cubic_meter = delta.as_unit(Unit.CUBIC_METER)
-        value_sum_as_cubic_meter = value_as_cubic_meter + delta_value_as_cubic_meter
-        return Volume(value_sum_as_cubic_meter, Unit.CUBIC_METER)
+        value_as_cubic_metre = self.as_unit(Unit.CUBIC_METRE)
+        delta_value_as_cubic_metre = delta.as_unit(Unit.CUBIC_METRE)
+        value_sum_as_cubic_metre = value_as_cubic_metre + delta_value_as_cubic_metre
+        return Volume(value_sum_as_cubic_metre, Unit.CUBIC_METRE)
 
     def __radd__(self, delta: VolumeDelta) -> "Volume":
         """Return the sum of the volume and the difference."""
@@ -56,45 +56,46 @@ class Volume:
         - If the argument is a volume difference, return the volume less the
           difference.
         """
-        value_as_cubic_meter = self.as_unit(Unit.CUBIC_METER)
-        other_value_as_cubic_meter = other.as_unit(Unit.CUBIC_METER)
-        value_difference_as_cubic_meter = (
-            value_as_cubic_meter - other_value_as_cubic_meter
+        value_as_cubic_metre = self.as_unit(Unit.CUBIC_METRE)
+        other_value_as_cubic_metre = other.as_unit(Unit.CUBIC_METRE)
+        value_difference_as_cubic_metre = (
+            value_as_cubic_metre - other_value_as_cubic_metre
         )
         return (
-            VolumeDelta(value_difference_as_cubic_meter, Unit.CUBIC_METER)
+            VolumeDelta(value_difference_as_cubic_metre, Unit.CUBIC_METRE)
             if isinstance(other, Volume)
-            else Volume(value_difference_as_cubic_meter, Unit.CUBIC_METER)
+            else Volume(value_difference_as_cubic_metre, Unit.CUBIC_METRE)
         )
 
     def __eq__(self, other: object) -> bool:
         """Return whether the objects are equal volumes."""
-        return isinstance(other, Volume) and self.as_unit(
-            Unit.CUBIC_METER,
-        ) == other.as_unit(Unit.CUBIC_METER)
+        if not isinstance(other, Volume):
+            return NotImplemented
+
+        return self.as_unit(Unit.CUBIC_METRE) == other.as_unit(Unit.CUBIC_METRE)
 
     def __lt__(self, other: "Volume") -> bool:
         """Return whether the volume is less than the other."""
-        return self.as_unit(Unit.CUBIC_METER) < other.as_unit(Unit.CUBIC_METER)
+        return self.as_unit(Unit.CUBIC_METRE) < other.as_unit(Unit.CUBIC_METRE)
 
     def __le__(self, other: "Volume") -> bool:
         """Return whether the volume is less than or equal to the other."""
-        return self.as_unit(Unit.CUBIC_METER) <= other.as_unit(Unit.CUBIC_METER)
+        return self.as_unit(Unit.CUBIC_METRE) <= other.as_unit(Unit.CUBIC_METRE)
 
     def __gt__(self, other: "Volume") -> bool:
         """Return whether the volume is greater than the other."""
-        return self.as_unit(Unit.CUBIC_METER) > other.as_unit(Unit.CUBIC_METER)
+        return self.as_unit(Unit.CUBIC_METRE) > other.as_unit(Unit.CUBIC_METRE)
 
     def __ge__(self, other: "Volume") -> bool:
         """Return whether the volume is greater than or equal to the other."""
-        return self.as_unit(Unit.CUBIC_METER) >= other.as_unit(Unit.CUBIC_METER)
+        return self.as_unit(Unit.CUBIC_METRE) >= other.as_unit(Unit.CUBIC_METRE)
 
     def __hash__(self) -> int:
         """Return the hash of the volume.
 
         NB: Exercise the usual caution around a hash of a floating point number.
         """
-        return hash(self.as_unit(Unit.CUBIC_METER))
+        return hash(self.as_unit(Unit.CUBIC_METRE))
 
     def __str__(self) -> str:
         """Return a string representation of the volume."""

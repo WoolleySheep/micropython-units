@@ -104,9 +104,10 @@ class TimeDelta:
 
     def __eq__(self, other: object) -> bool:
         """Return whether the objects are equal time differences."""
-        return isinstance(other, TimeDelta) and self.as_unit(
-            Unit.SECOND,
-        ) == other.as_unit(Unit.SECOND)
+        if not isinstance(other, TimeDelta):
+            return NotImplemented
+
+        return self.as_unit(Unit.SECOND) == other.as_unit(Unit.SECOND)
 
     def __lt__(self, other: "TimeDelta") -> bool:
         """Return whether the time difference is less than the other."""

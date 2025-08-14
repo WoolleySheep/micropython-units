@@ -8,13 +8,13 @@ class VolumeDeltaTest(unittest.TestCase):
 
     def test_create_volume_delta(self) -> None:
         # Test passes if it simply doesn't throw an exception
-        _ = VolumeDelta(1, VolumeUnit.CUBIC_METER)
+        _ = VolumeDelta(1, VolumeUnit.CUBIC_METRE)
 
     def test_get_volume_delta_value_as_unit(self) -> None:
-        delta = VolumeDelta(1, VolumeUnit.CUBIC_METER)
+        delta = VolumeDelta(1, VolumeUnit.CUBIC_METRE)
 
         for unit, expected_value in [
-            (VolumeUnit.CUBIC_METER, 1),
+            (VolumeUnit.CUBIC_METRE, 1),
             (VolumeUnit.LITRE, 1_000),
             (VolumeUnit.MILLILITRE, 1_000_000),
             (VolumeUnit.MICROLITRE, 1_000_000_000),
@@ -23,66 +23,66 @@ class VolumeDeltaTest(unittest.TestCase):
                 self.assertAlmostEqual(expected_value, delta.as_unit(unit))
 
     def test_add_volume_deltas_produces_volume_delta(self) -> None:
-        delta1 = VolumeDelta(1, VolumeUnit.CUBIC_METER)
-        delta2 = VolumeDelta(2, VolumeUnit.CUBIC_METER)
+        delta1 = VolumeDelta(1, VolumeUnit.CUBIC_METRE)
+        delta2 = VolumeDelta(2, VolumeUnit.CUBIC_METRE)
         new_delta = delta1 + delta2
-        self.assertAlmostEqual(3, new_delta.as_unit(VolumeUnit.CUBIC_METER))
+        self.assertAlmostEqual(3, new_delta.as_unit(VolumeUnit.CUBIC_METRE))
 
     def test_subtract_volume_deltas_produces_volume_delta(self) -> None:
-        delta1 = VolumeDelta(3, VolumeUnit.CUBIC_METER)
-        delta2 = VolumeDelta(2, VolumeUnit.CUBIC_METER)
+        delta1 = VolumeDelta(3, VolumeUnit.CUBIC_METRE)
+        delta2 = VolumeDelta(2, VolumeUnit.CUBIC_METRE)
         new_delta = delta1 - delta2
-        self.assertAlmostEqual(1, new_delta.as_unit(VolumeUnit.CUBIC_METER))
+        self.assertAlmostEqual(1, new_delta.as_unit(VolumeUnit.CUBIC_METRE))
 
     def test_multiply_volume_delta_by_value(self) -> None:
-        delta = VolumeDelta(1, VolumeUnit.CUBIC_METER)
+        delta = VolumeDelta(1, VolumeUnit.CUBIC_METRE)
         new_delta_left_mult = 2 * delta
         new_delta_right_mult = delta * 2
-        self.assertAlmostEqual(2, new_delta_left_mult.as_unit(VolumeUnit.CUBIC_METER))
-        self.assertAlmostEqual(2, new_delta_right_mult.as_unit(VolumeUnit.CUBIC_METER))
+        self.assertAlmostEqual(2, new_delta_left_mult.as_unit(VolumeUnit.CUBIC_METRE))
+        self.assertAlmostEqual(2, new_delta_right_mult.as_unit(VolumeUnit.CUBIC_METRE))
 
     def test_divide_volume_delta_by_value(self) -> None:
-        delta = VolumeDelta(2, VolumeUnit.CUBIC_METER)
+        delta = VolumeDelta(2, VolumeUnit.CUBIC_METRE)
         new_delta = delta / 2
-        self.assertAlmostEqual(1, new_delta.as_unit(VolumeUnit.CUBIC_METER))
+        self.assertAlmostEqual(1, new_delta.as_unit(VolumeUnit.CUBIC_METRE))
 
     def test_divide_volume_delta_by_volume_delta_produces_ratio(self) -> None:
-        delta1 = VolumeDelta(2, VolumeUnit.CUBIC_METER)
-        delta2 = VolumeDelta(1, VolumeUnit.CUBIC_METER)
+        delta1 = VolumeDelta(2, VolumeUnit.CUBIC_METRE)
+        delta2 = VolumeDelta(1, VolumeUnit.CUBIC_METRE)
         ratio = delta1 / delta2
         self.assertAlmostEqual(2, ratio)
 
     def test_negative_of_volume_delta(self) -> None:
-        delta = VolumeDelta(1, VolumeUnit.CUBIC_METER)
+        delta = VolumeDelta(1, VolumeUnit.CUBIC_METRE)
         new_delta = -delta
-        self.assertAlmostEqual(-1, new_delta.as_unit(VolumeUnit.CUBIC_METER))
+        self.assertAlmostEqual(-1, new_delta.as_unit(VolumeUnit.CUBIC_METRE))
 
     def test_absolute_of_volume_delta(self) -> None:
-        delta = VolumeDelta(-1, VolumeUnit.CUBIC_METER)
+        delta = VolumeDelta(-1, VolumeUnit.CUBIC_METRE)
         new_delta = abs(delta)
-        self.assertAlmostEqual(1, new_delta.as_unit(VolumeUnit.CUBIC_METER))
+        self.assertAlmostEqual(1, new_delta.as_unit(VolumeUnit.CUBIC_METRE))
 
     def test_floor_divide_volume_delta_by_volume_delta_produces_floored_ratio(
         self,
     ) -> None:
-        delta1 = VolumeDelta(3, VolumeUnit.CUBIC_METER)
-        delta2 = VolumeDelta(2, VolumeUnit.CUBIC_METER)
+        delta1 = VolumeDelta(3, VolumeUnit.CUBIC_METRE)
+        delta2 = VolumeDelta(2, VolumeUnit.CUBIC_METRE)
         floored_ratio = delta1 // delta2
         self.assertAlmostEqual(1, floored_ratio)
 
     def test_modulo_volume_delta_by_volume_delta_produces_ratio_remainder(
         self,
     ) -> None:
-        delta1 = VolumeDelta(3, VolumeUnit.CUBIC_METER)
-        delta2 = VolumeDelta(2, VolumeUnit.CUBIC_METER)
+        delta1 = VolumeDelta(3, VolumeUnit.CUBIC_METRE)
+        delta2 = VolumeDelta(2, VolumeUnit.CUBIC_METRE)
         remainder = delta1 % delta2
         self.assertAlmostEqual(1, remainder)
 
     def test_divmod_volume_delta_by_volume_delta_produces_floored_ratio_and_remainder(
         self,
     ) -> None:
-        delta1 = VolumeDelta(3, VolumeUnit.CUBIC_METER)
-        delta2 = VolumeDelta(2, VolumeUnit.CUBIC_METER)
+        delta1 = VolumeDelta(3, VolumeUnit.CUBIC_METRE)
+        delta2 = VolumeDelta(2, VolumeUnit.CUBIC_METRE)
         floored_ratio, remainder = divmod(delta1, delta2)
         self.assertAlmostEqual(1, floored_ratio)
         self.assertAlmostEqual(1, remainder)
@@ -99,8 +99,8 @@ class VolumeDeltaTest(unittest.TestCase):
             is_greater_than_or_equal_to,
         ) in [
             (
-                VolumeDelta(0, VolumeUnit.CUBIC_METER),
-                VolumeDelta(0, VolumeUnit.CUBIC_METER),
+                VolumeDelta(0, VolumeUnit.CUBIC_METRE),
+                VolumeDelta(0, VolumeUnit.CUBIC_METRE),
                 True,
                 False,
                 False,
@@ -109,8 +109,8 @@ class VolumeDeltaTest(unittest.TestCase):
                 True,
             ),
             (
-                VolumeDelta(0, VolumeUnit.CUBIC_METER),
-                VolumeDelta(1, VolumeUnit.CUBIC_METER),
+                VolumeDelta(0, VolumeUnit.CUBIC_METRE),
+                VolumeDelta(1, VolumeUnit.CUBIC_METRE),
                 False,
                 True,
                 True,
@@ -119,8 +119,8 @@ class VolumeDeltaTest(unittest.TestCase):
                 False,
             ),
             (
-                VolumeDelta(1, VolumeUnit.CUBIC_METER),
-                VolumeDelta(0, VolumeUnit.CUBIC_METER),
+                VolumeDelta(1, VolumeUnit.CUBIC_METRE),
+                VolumeDelta(0, VolumeUnit.CUBIC_METRE),
                 False,
                 True,
                 False,

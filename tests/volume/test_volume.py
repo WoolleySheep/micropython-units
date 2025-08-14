@@ -8,20 +8,20 @@ class VolumeTest(unittest.TestCase):
 
     def test_create_volume(self) -> None:
         # Test passes if it simply doesn't throw an exception
-        _ = Volume(1, VolumeUnit.CUBIC_METER)
+        _ = Volume(1, VolumeUnit.CUBIC_METRE)
 
     def test_exception_raised_when_creating_volume_value_is_negative(
         self,
     ) -> None:
         with self.assertRaises(NegativeVolumeValueError) as cm:
-            _ = Volume(-300, VolumeUnit.CUBIC_METER)
+            _ = Volume(-300, VolumeUnit.CUBIC_METRE)
         self.assertAlmostEqual(-300, cm.exception.value)
 
     def test_get_volume_value_as_unit(self) -> None:
-        volume = Volume(1, VolumeUnit.CUBIC_METER)
+        volume = Volume(1, VolumeUnit.CUBIC_METRE)
 
         for unit, expected_value in [
-            (VolumeUnit.CUBIC_METER, 1),
+            (VolumeUnit.CUBIC_METRE, 1),
             (VolumeUnit.LITRE, 1_000),
             (VolumeUnit.MILLILITRE, 1_000_000),
             (VolumeUnit.MICROLITRE, 1_000_000_000),
@@ -41,8 +41,8 @@ class VolumeTest(unittest.TestCase):
             is_greater_than_or_equal_to,
         ) in [
             (
-                Volume(0, VolumeUnit.CUBIC_METER),
-                Volume(0, VolumeUnit.CUBIC_METER),
+                Volume(0, VolumeUnit.CUBIC_METRE),
+                Volume(0, VolumeUnit.CUBIC_METRE),
                 True,
                 False,
                 False,
@@ -51,8 +51,8 @@ class VolumeTest(unittest.TestCase):
                 True,
             ),
             (
-                Volume(0, VolumeUnit.CUBIC_METER),
-                Volume(1, VolumeUnit.CUBIC_METER),
+                Volume(0, VolumeUnit.CUBIC_METRE),
+                Volume(1, VolumeUnit.CUBIC_METRE),
                 False,
                 True,
                 True,
@@ -61,8 +61,8 @@ class VolumeTest(unittest.TestCase):
                 False,
             ),
             (
-                Volume(1, VolumeUnit.CUBIC_METER),
-                Volume(0, VolumeUnit.CUBIC_METER),
+                Volume(1, VolumeUnit.CUBIC_METRE),
+                Volume(0, VolumeUnit.CUBIC_METRE),
                 False,
                 True,
                 False,

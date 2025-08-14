@@ -25,7 +25,7 @@ class PressureTest(unittest.TestCase):
             (PressureUnit.POUND_PER_SQUARE_INCH, 0.00014503773773),
             (PressureUnit.BAR, 1 / 100_000),
             (PressureUnit.ATMOSPHERE, 1 / 101_325),
-            (PressureUnit.MILLIMETER_OF_MERCURY, 1 / 133.322387415),
+            (PressureUnit.MILLIMETRE_OF_MERCURY, 1 / 133.322387415),
             (PressureUnit.KILOPASCAL, 1 / 1_000),
             (PressureUnit.MILLIBAR, 1 / 100),
         ]:

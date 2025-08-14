@@ -1,5 +1,9 @@
 """Package for unit tests of physical quantity classes."""
 
+from .flow_rate import MassFlowRateTest, VolumetricFlowRateTest
+from .length import LengthAndLengthDeltaTest, LengthDeltaTest, LengthTest
+from .length import ZeroTest as LengthZeroTest
+from .linear_motion import AccelerationTest, DisplacementTest, VelocityTest
 from .mass import MassAndMassDeltaTest, MassDeltaTest, MassTest
 from .mass import ZeroTest as MassZeroTest
 from .pressure import (
@@ -19,15 +23,22 @@ from .time import TimeAndTimeDeltaTest, TimeDeltaTest, TimeTest
 from .time import ZeroTest as TimeZeroTest
 from .volume import VolumeAndVolumeDeltaTest, VolumeDeltaTest, VolumeTest
 from .volume import ZeroTest as VolumeZeroTest
-from .volumetric_flow_rate import VolumetricFlowRateTest
 
 __all__ = [
     "AbsoluteZeroTest",
+    "LengthZeroTest",
     "PerfectVacuumTest",
+    "LengthAndLengthDeltaTest",
+    "LengthDeltaTest",
+    "AccelerationTest",
+    "DisplacementTest",
+    "VelocityTest",
+    "LengthTest",
     "PressureAndPressureDeltaTest",
     "PressureDeltaTest",
     "PressureTest",
     "StandardAtmosphereTest",
+    "MassFlowRateTest",
     "TemperatureAndTemperatureDeltaTest",
     "TemperatureDeltaTest",
     "TemperatureTest",

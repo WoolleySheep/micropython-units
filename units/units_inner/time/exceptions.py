@@ -6,7 +6,7 @@ from typing import Any
 class NegativeTimeValueError(ValueError):
     """Raised when the time value is negative.
 
-    The minimum volume that can exist is 0s,
+    The minimum time that can exist is 0s,
     so a time with a negative value, regardless of the unit, is impossible.
     """
 
