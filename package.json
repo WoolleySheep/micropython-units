@@ -9,6 +9,10 @@
             "github:WoolleySheep/micropython-units/units/angle.py"
         ],
         [
+            "units/angular_motion.py",
+            "github:WoolleySheep/micropython-units/units/angular_motion.py"
+        ],
+        [
             "units/flow_rate.py",
             "github:WoolleySheep/micropython-units/units/flow_rate.py"
         ],
@@ -59,6 +63,22 @@
         [
             "units/units_inner/angle/unit.py",
             "github:WoolleySheep/micropython-units/units/units_inner/angle/unit.py"
+        ],
+        [
+            "units/units_inner/angular_motion/__init__.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/angular_motion/__init__.py"
+        ],
+        [
+            "units/units_inner/angular_motion/acceleration.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/angular_motion/acceleration.py"
+        ],
+        [
+            "units/units_inner/angular_motion/displacement.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/angular_motion/displacement.py"
+        ],
+        [
+            "units/units_inner/angular_motion/velocity.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/angular_motion/velocity.py"
         ],
         [
             "units/units_inner/flow_rate/__init__.py",

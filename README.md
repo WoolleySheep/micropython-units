@@ -58,8 +58,8 @@ set_pump_speed(new_flow_rate)
 
 ...
 
-new_acceleration = Acceleration(0.7, DistanceUnit.METRE, TimeUnit.SECOND, TimeUnit.SECOND)  # 0.7 m/s^2
-set_robot_arm_maximum_acceleration(new_acceleration)
+new_acceleration = AngularAcceleration(2.5, AngleUnit.DEGREE, TimeUnit.SECOND, TimeUnit.SECOND)  # 2.5 deg/s^2
+set_robot_arm_maximum_rotation_acceleration(new_acceleration)
 ```
 
 ## Units supported (more to follow)
@@ -77,6 +77,10 @@ set_robot_arm_maximum_acceleration(new_acceleration)
         - Displacement
         - Velocity
         - Acceleration
+    - Angular Motion
+        - Angular Displacement
+        - Angular Velocity
+        - Angular Acceleration
 - Flow Rate
     - Volumetric Flow Rate
     - Mass Flow Rate
@@ -114,24 +118,20 @@ Code that runs in CPython is not guaranteed to function the same (or at all) in 
 ##### Steps
 1. Download the micropython unix port image, then run it as a new container, binding the `micropython-units` repo
     ```
-    docker run -it --name micropython-units-testing --network=host --mount type=bind,source=<PATH_TO_LOCAL_MICROPYTHON_UNITS_REPO>,target=/home --entrypoint bash micropython/unix:latest
+    docker run -it --name micropython-units-testing --network=host --mount type=bind,source=<PATH_TO_LOCAL_MICROPYTHON_UNITS_REPO>,target=/home --workdir /home bash micropython/unix:latest
     ```
-2. Navigate to the repo directory
-    ```
-    cd ~/../home
-    ```
-3. Activate the micropython unix port
+2. Activate the micropython unix port
     ```
     micropython
     ```
-4. Install the `unittest` & `typing` dependencies
+3. Install the `unittest` & `typing` dependencies
     ```python
     import mip
 
     mip.install("unittest")
     mip.install("github:Josverl/micropython-stubs/mip/typing.py")
     ```
-5. Run unit tests
+4. Run unit tests
     ```python
     import unittest
     unittest.main("tests")

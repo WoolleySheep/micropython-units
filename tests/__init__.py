@@ -2,6 +2,11 @@
 
 from .angle import AngleAndAngleDeltaTest, AngleDeltaTest, AngleTest
 from .angle import ZeroTest as AngleZeroTest
+from .angular_motion import (
+    AngularAccelerationTest,
+    AngularDisplacementTest,
+    AngularVelocityTest,
+)
 from .flow_rate import MassFlowRateTest, VolumetricFlowRateTest
 from .length import LengthAndLengthDeltaTest, LengthDeltaTest, LengthTest
 from .length import ZeroTest as LengthZeroTest
@@ -38,6 +43,9 @@ __all__ = [
     "LengthDeltaTest",
     "LengthDeltaTest",
     "AccelerationTest",
+    "AngularAccelerationTest",
+    "AngularDisplacementTest",
+    "AngularVelocityTest",
     "DisplacementTest",
     "VelocityTest",
     "LengthTest",

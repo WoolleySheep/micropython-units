@@ -2,6 +2,7 @@
 
 from . import (
     angle,
+    angular_motion,
     flow_rate,
     length,
     linear_motion,
@@ -12,6 +13,9 @@ from . import (
 )
 from .units_inner.angle import Angle, AngleDelta
 from .units_inner.angle import Unit as AngleUnit
+from .units_inner.angular_motion import Acceleration as AngularAcceleration
+from .units_inner.angular_motion import Displacement as AngularDisplacement
+from .units_inner.angular_motion import Velocity as AngularVelocity
 from .units_inner.flow_rate import MassFlowRate, VolumetricFlowRate
 from .units_inner.length import Length, LengthDelta, NegativeLengthValueError
 from .units_inner.length import Unit as DistanceUnit
@@ -37,6 +41,9 @@ __all__ = [
     "Angle",
     "AngleDelta",
     "AngleUnit",
+    "AngularAcceleration",
+    "AngularDisplacement",
+    "AngularVelocity",
     "BelowAbsoluteZeroError",
     "Displacement",
     "Displacement",
@@ -68,6 +75,7 @@ __all__ = [
     "VolumeUnit",
     "VolumetricFlowRate",
     "angle",
+    "angular_motion",
     "flow_rate",
     "length",
     "linear_motion",
