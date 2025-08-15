@@ -73,6 +73,8 @@ set_robot_arm_maximum_rotation_acceleration(new_acceleration)
     - Area
     - Volume
     - Angle
+- Electrical
+    - Current
 - Motion
     - Linear Motion
         - Displacement

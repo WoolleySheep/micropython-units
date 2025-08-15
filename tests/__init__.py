@@ -10,6 +10,8 @@ from .angular_motion import (
 )
 from .area import AreaAndAreaDeltaTest, AreaDeltaTest, AreaTest
 from .area import ZeroTest as AreaZeroTest
+from .current import CurrentTest
+from .current import ZeroTest as CurrentZeroTest
 from .flow_rate import MassFlowRateTest, VolumetricFlowRateTest
 from .length import LengthAndLengthDeltaTest, LengthDeltaTest, LengthTest
 from .length import ZeroTest as LengthZeroTest
@@ -35,6 +37,8 @@ from .volume import VolumeAndVolumeDeltaTest, VolumeDeltaTest, VolumeTest
 from .volume import ZeroTest as VolumeZeroTest
 
 __all__ = [
+    "CurrentZeroTest",
+    "CurrentTest",
     "AreaAndAreaDeltaTest",
     "AreaDeltaTest",
     "AreaTest",

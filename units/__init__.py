@@ -4,6 +4,7 @@ from . import (
     angle,
     angular_motion,
     area,
+    current,
     flow_rate,
     length,
     linear_motion,
@@ -20,6 +21,8 @@ from .units_inner.angular_motion import Jerk as AngularJerk
 from .units_inner.angular_motion import Velocity as AngularVelocity
 from .units_inner.area import Area, AreaDelta, NegativeAreaValueError
 from .units_inner.area import Unit as AreaUnit
+from .units_inner.current import Current
+from .units_inner.current import Unit as CurrentUnit
 from .units_inner.flow_rate import MassFlowRate, VolumetricFlowRate
 from .units_inner.length import Length, LengthDelta, NegativeLengthValueError
 from .units_inner.length import Unit as DistanceUnit
@@ -52,6 +55,8 @@ __all__ = [
     "AreaDelta",
     "AreaUnit",
     "BelowAbsoluteZeroError",
+    "Current",
+    "CurrentUnit",
     "Displacement",
     "Displacement",
     "DistanceUnit",
@@ -86,6 +91,7 @@ __all__ = [
     "angle",
     "angular_motion",
     "area",
+    "current",
     "flow_rate",
     "length",
     "linear_motion",
