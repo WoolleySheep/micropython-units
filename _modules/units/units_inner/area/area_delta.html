@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>units.units_inner.area.area_delta &#8212; micropython-units 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for units.units_inner.area.area_delta</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Module for the area difference class.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">overload</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.unit</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Unit</span><span class="p">,</span>
+    <span class="n">get_abbreviation</span><span class="p">,</span>
+    <span class="n">get_name</span><span class="p">,</span>
+    <span class="n">get_unit_delta_per_square_metre</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="AreaDelta">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AreaDelta</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The difference between two areas.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AreaDelta.__init__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="n">Unit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise a new area difference.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_unit</span> <span class="o">=</span> <span class="n">unit</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.as_unit">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.as_unit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">as_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unit</span><span class="p">:</span> <span class="n">Unit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the area difference, expressed as the unit.&quot;&quot;&quot;</span>
+        <span class="n">internal_unit_delta_per_square_metre</span> <span class="o">=</span> <span class="n">get_unit_delta_per_square_metre</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_unit</span>
+        <span class="p">)</span>
+        <span class="n">value_as_square_metre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">/</span> <span class="n">internal_unit_delta_per_square_metre</span>
+        <span class="n">external_unit_delta_per_square_metre</span> <span class="o">=</span> <span class="n">get_unit_delta_per_square_metre</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">external_unit_delta_per_square_metre</span> <span class="o">*</span> <span class="n">value_as_square_metre</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__mul__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__mul__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a area difference scaled by the value.&quot;&quot;&quot;</span>
+        <span class="n">scaled_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">*</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="n">AreaDelta</span><span class="p">(</span><span class="n">scaled_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unit</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__rmul__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__rmul__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a area difference scaled by the value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">value</span></div>
+
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span> <span class="o">...</span>
+
+<div class="viewcode-block" id="AreaDelta.__truediv__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__truediv__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;float | AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AreaDelta | float&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a scaled area difference or the ratio between the differences.</span>
+
+<span class="sd">        The behaviour depends upon the type of the argument.</span>
+
+<span class="sd">        - If the argument is :py:class:`float`, return a area difference scaled by the</span>
+<span class="sd">          inverse of the value</span>
+<span class="sd">        - If the argument is a :py:class:`AreaDelta`, return the ratio between the two</span>
+<span class="sd">          differences</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">AreaDelta</span><span class="p">):</span>
+            <span class="n">value_as_square_metre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span>
+            <span class="n">other_value_as_square_metre</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">value_as_square_metre</span> <span class="o">/</span> <span class="n">other_value_as_square_metre</span>
+
+        <span class="n">scaled_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">/</span> <span class="n">other</span>
+        <span class="k">return</span> <span class="n">AreaDelta</span><span class="p">(</span><span class="n">scaled_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unit</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__add__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__add__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the sum of the area differences.&quot;&quot;&quot;</span>
+        <span class="c1"># This NotImplemented block is here because the case of</span>
+        <span class="c1"># a AreaDelta + a Area is handled in the __radd__ method in the</span>
+        <span class="c1"># Area class, otherwise it runs into problems with circular imports</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">AreaDelta</span><span class="p">):</span>  <span class="c1"># type: ignore[reportUnnecessaryIsInstance]</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+        <span class="n">value_as_square_metre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span>
+        <span class="n">delta_value_as_square_metre</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span>
+        <span class="n">added_value_as_square_metre</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">value_as_square_metre</span> <span class="o">+</span> <span class="n">delta_value_as_square_metre</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">AreaDelta</span><span class="p">(</span><span class="n">added_value_as_square_metre</span><span class="p">,</span> <span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__sub__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__sub__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the difference between the area differences.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">delta</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__neg__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__neg__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the inverse of the area difference.&quot;&quot;&quot;</span>
+        <span class="n">inverted_value</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+        <span class="k">return</span> <span class="n">AreaDelta</span><span class="p">(</span><span class="n">inverted_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unit</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__abs__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__abs__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the absolute version of the area difference.&quot;&quot;&quot;</span>
+        <span class="n">absolute_value</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">AreaDelta</span><span class="p">(</span><span class="n">absolute_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unit</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__floordiv__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__floordiv__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the floored ratio between the area differences.&quot;&quot;&quot;</span>
+        <span class="n">value_as_square_metre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span>
+        <span class="n">other_value_as_square_metre</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value_as_square_metre</span> <span class="o">//</span> <span class="n">other_value_as_square_metre</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__mod__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__mod__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the remainder of the ratio between the area differences.&quot;&quot;&quot;</span>
+        <span class="n">value_as_square_metre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span>
+        <span class="n">other_value_as_square_metre</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value_as_square_metre</span> <span class="o">%</span> <span class="n">other_value_as_square_metre</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__divmod__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__divmod__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__divmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the quotient &amp; remainder of the ratio between the area deltas.&quot;&quot;&quot;</span>
+        <span class="n">value_as_square_metre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span>
+        <span class="n">other_value_as_square_metre</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">value_as_square_metre</span><span class="p">,</span> <span class="n">other_value_as_square_metre</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__eq__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__eq__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the objects are equal area differences.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">AreaDelta</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__lt__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__lt__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the area difference is less than the other.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__le__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__le__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the area delta is less than or equal to the other.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__gt__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__gt__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the area difference is greater than the other.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__ge__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__ge__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;AreaDelta&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the area delta is greater than or equal to the other.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AreaDelta.__hash__">
+<a class="viewcode-back" href="../../../../units.html#units.AreaDelta.__hash__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the hash of the area difference.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">Unit</span><span class="o">.</span><span class="n">SQUARE_METRE</span><span class="p">))</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a string representation of the area difference.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">get_abbreviation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_unit</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a string representation of the area difference for devs.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">get_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_unit</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">micropython-units</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../units.html">units package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../units.html#submodules">Submodules</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Matthew Woolley.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

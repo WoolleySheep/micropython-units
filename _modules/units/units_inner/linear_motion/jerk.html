@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>units.units_inner.linear_motion.jerk &#8212; micropython-units 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for units.units_inner.linear_motion.jerk</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Module for the jerk class.&quot;&quot;&quot;</span>
+
+<span class="c1"># ruff: noqa: TID252</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">overload</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..length</span><span class="w"> </span><span class="kn">import</span> <span class="n">Unit</span> <span class="k">as</span> <span class="n">DistanceUnit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..length</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_unit_abbreviation</span> <span class="k">as</span> <span class="n">get_distance_unit_abbreviation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..length</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_unit_delta_per_metre</span> <span class="k">as</span> <span class="n">get_distance_unit_delta_per_metre</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..length</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_unit_name</span> <span class="k">as</span> <span class="n">get_distance_unit_name</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..time</span><span class="w"> </span><span class="kn">import</span> <span class="n">Unit</span> <span class="k">as</span> <span class="n">TimeUnit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..time</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_unit_abbreviation</span> <span class="k">as</span> <span class="n">get_time_unit_abbreviation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..time</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_unit_delta_per_second</span> <span class="k">as</span> <span class="n">get_time_unit_delta_per_second</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..time</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_unit_name</span> <span class="k">as</span> <span class="n">get_time_unit_name</span>
+
+
+<div class="viewcode-block" id="Jerk">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Jerk</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The rate of change of the jerk of an object with respect to time.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Jerk.__init__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>  <span class="c1"># pylint: disable=too-many-arguments, too-many-positional-arguments</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">distance_unit</span><span class="p">:</span> <span class="n">DistanceUnit</span><span class="p">,</span>
+        <span class="n">first_time_unit</span><span class="p">:</span> <span class="n">TimeUnit</span><span class="p">,</span>
+        <span class="n">second_time_unit</span><span class="p">:</span> <span class="n">TimeUnit</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">third_time_unit</span><span class="p">:</span> <span class="n">TimeUnit</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise a new jerk.</span>
+
+<span class="sd">        If a second time unit is not provided, the first time unit will be reused.</span>
+<span class="sd">        If the third time unit is not provided, the second time unit will be reused</span>
+<span class="sd">        (or the first, if the second is also not provided).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_distance_unit</span> <span class="o">=</span> <span class="n">distance_unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_first_time_unit</span> <span class="o">=</span> <span class="n">first_time_unit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_second_time_unit</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">second_time_unit</span> <span class="k">if</span> <span class="n">second_time_unit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">first_time_unit</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_third_time_unit</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">third_time_unit</span> <span class="k">if</span> <span class="n">third_time_unit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_second_time_unit</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.as_unit">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.as_unit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">as_unit</span><span class="p">(</span>  <span class="c1"># pylint: disable=too-many-locals</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">distance_unit</span><span class="p">:</span> <span class="n">DistanceUnit</span><span class="p">,</span>
+        <span class="n">first_time_unit</span><span class="p">:</span> <span class="n">TimeUnit</span><span class="p">,</span>
+        <span class="n">second_time_unit</span><span class="p">:</span> <span class="n">TimeUnit</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">third_time_unit</span><span class="p">:</span> <span class="n">TimeUnit</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the jerk in the specified units.</span>
+
+<span class="sd">        If a second time unit is not provided, the first time unit will be reused.</span>
+<span class="sd">        If the third time unit is not provided, the second time unit will be reused</span>
+<span class="sd">        (or the first, if the second is also not provided).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">internal_distance_unit_delta_per_metre</span> <span class="o">=</span> <span class="n">get_distance_unit_delta_per_metre</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_distance_unit</span>
+        <span class="p">)</span>
+        <span class="n">internal_first_time_unit_delta_per_second</span> <span class="o">=</span> <span class="n">get_time_unit_delta_per_second</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_first_time_unit</span>
+        <span class="p">)</span>
+        <span class="n">internal_second_time_unit_delta_per_second</span> <span class="o">=</span> <span class="n">get_time_unit_delta_per_second</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_second_time_unit</span>
+        <span class="p">)</span>
+        <span class="n">internal_third_time_unit_delta_per_second</span> <span class="o">=</span> <span class="n">get_time_unit_delta_per_second</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_third_time_unit</span>
+        <span class="p">)</span>
+        <span class="n">internal_unit_to_metre_per_second_cubed_factor</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">internal_third_time_unit_delta_per_second</span>
+            <span class="o">*</span> <span class="n">internal_second_time_unit_delta_per_second</span>
+            <span class="o">*</span> <span class="n">internal_first_time_unit_delta_per_second</span>
+            <span class="o">/</span> <span class="n">internal_distance_unit_delta_per_metre</span>
+        <span class="p">)</span>
+        <span class="n">value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">internal_unit_to_metre_per_second_cubed_factor</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+        <span class="p">)</span>
+        <span class="n">external_distance_unit_delta_per_metre</span> <span class="o">=</span> <span class="n">get_distance_unit_delta_per_metre</span><span class="p">(</span>
+            <span class="n">distance_unit</span>
+        <span class="p">)</span>
+        <span class="n">external_first_time_unit_delta_per_second</span> <span class="o">=</span> <span class="n">get_time_unit_delta_per_second</span><span class="p">(</span>
+            <span class="n">first_time_unit</span>
+        <span class="p">)</span>
+        <span class="n">external_second_time_unit_delta_per_second</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">get_time_unit_delta_per_second</span><span class="p">(</span><span class="n">second_time_unit</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">second_time_unit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="n">external_first_time_unit_delta_per_second</span>
+        <span class="p">)</span>
+        <span class="n">external_third_time_unit_delta_per_second</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">get_time_unit_delta_per_second</span><span class="p">(</span><span class="n">third_time_unit</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">third_time_unit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="n">external_second_time_unit_delta_per_second</span>
+        <span class="p">)</span>
+        <span class="n">metre_per_second_cubed_to_external_unit_factor</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">external_distance_unit_delta_per_metre</span>
+            <span class="o">/</span> <span class="p">(</span>
+                <span class="n">external_first_time_unit_delta_per_second</span>
+                <span class="o">*</span> <span class="n">external_second_time_unit_delta_per_second</span>
+                <span class="o">*</span> <span class="n">external_third_time_unit_delta_per_second</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">metre_per_second_cubed_to_external_unit_factor</span>
+            <span class="o">*</span> <span class="n">value_as_metre_per_second_cubed</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__mul__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__mul__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return an jerk scaled by the value.&quot;&quot;&quot;</span>
+        <span class="n">scaled_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">*</span> <span class="n">value</span>
+        <span class="k">return</span> <span class="n">Jerk</span><span class="p">(</span>
+            <span class="n">scaled_value</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_distance_unit</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_first_time_unit</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_second_time_unit</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_third_time_unit</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__rmul__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__rmul__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return an jerk scaled by the value.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">value</span></div>
+
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span> <span class="o">...</span>
+
+<div class="viewcode-block" id="Jerk.__truediv__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__truediv__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;float | Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Jerk | float&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a scaled jerk or the ratio between the jerks.</span>
+
+<span class="sd">        The behaviour depends upon the type of the argument.</span>
+
+<span class="sd">        - If the argument is a :py:class:`float`, return an jerk scaled by the</span>
+<span class="sd">          inverse of the value</span>
+<span class="sd">        - If the argument is a :py:class:`Jerk`, return the ratio between the two</span>
+<span class="sd">          jerks</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Jerk</span><span class="p">):</span>
+            <span class="n">value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+                <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+            <span class="p">)</span>
+            <span class="n">other_value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+                <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="n">value_as_metre_per_second_cubed</span> <span class="o">/</span> <span class="n">other_value_as_metre_per_second_cubed</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">other</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__add__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__add__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the sum of two jerks.&quot;&quot;&quot;</span>
+        <span class="n">value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span>
+        <span class="n">other_value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span>
+        <span class="n">value_sum_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">value_as_metre_per_second_cubed</span> <span class="o">+</span> <span class="n">other_value_as_metre_per_second_cubed</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">Jerk</span><span class="p">(</span>
+            <span class="n">value_sum_as_metre_per_second_cubed</span><span class="p">,</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span>
+            <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__sub__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__sub__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the difference of two jerks.&quot;&quot;&quot;</span>
+        <span class="n">value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span>
+        <span class="n">other_value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span>
+        <span class="n">value_difference_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">value_as_metre_per_second_cubed</span> <span class="o">-</span> <span class="n">other_value_as_metre_per_second_cubed</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">Jerk</span><span class="p">(</span>
+            <span class="n">value_difference_as_metre_per_second_cubed</span><span class="p">,</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span>
+            <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__neg__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__neg__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the inverse of the jerk.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__abs__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__abs__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the absolute version of the jerk.&quot;&quot;&quot;</span>
+        <span class="n">absolute_value</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Jerk</span><span class="p">(</span>
+            <span class="n">absolute_value</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_distance_unit</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_first_time_unit</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_second_time_unit</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__floordiv__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__floordiv__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the floored ratio between the jerks.&quot;&quot;&quot;</span>
+        <span class="n">value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span>
+        <span class="n">other_value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">value_as_metre_per_second_cubed</span> <span class="o">//</span> <span class="n">other_value_as_metre_per_second_cubed</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__mod__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__mod__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the remainder of the ratio between the jerk.&quot;&quot;&quot;</span>
+        <span class="n">value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span>
+        <span class="n">other_value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">value_as_metre_per_second_cubed</span> <span class="o">%</span> <span class="n">other_value_as_metre_per_second_cubed</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__divmod__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__divmod__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__divmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the quotient &amp; remainder of the ratio between the jerks.&quot;&quot;&quot;</span>
+        <span class="n">value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span>
+        <span class="n">other_value_as_metre_per_second_cubed</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">divmod</span><span class="p">(</span>
+            <span class="n">value_as_metre_per_second_cubed</span><span class="p">,</span>
+            <span class="n">other_value_as_metre_per_second_cubed</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__eq__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__eq__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the objects are equal jerks.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Jerk</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span><span class="p">)</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__lt__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__lt__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the jerk is less than the other.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__le__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__le__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the jerk is less than or equal to the other.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__gt__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__gt__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the jerk is greater than the other.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__ge__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__ge__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;Jerk&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether the jerk is greater than or equal to the other.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span>
+            <span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Jerk.__hash__">
+<a class="viewcode-back" href="../../../../units.html#units.Jerk.__hash__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the hash of the jerk.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">as_unit</span><span class="p">(</span><span class="n">DistanceUnit</span><span class="o">.</span><span class="n">METRE</span><span class="p">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="n">SECOND</span><span class="p">))</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a string representation of the jerk.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get_distance_unit_abbreviation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_distance_unit</span><span class="p">)</span><span class="si">}</span><span class="s2">/&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get_time_unit_abbreviation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_first_time_unit</span><span class="p">)</span><span class="si">}</span><span class="s2">/&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get_time_unit_abbreviation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_second_time_unit</span><span class="p">)</span><span class="si">}</span><span class="s2">/&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">get_time_unit_abbreviation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_third_time_unit</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a string representation of the jerk for developers.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="si">}</span><span class="s2">,&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">get_distance_unit_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_distance_unit</span><span class="p">)</span><span class="si">}</span><span class="s2">,&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">get_time_unit_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_first_time_unit</span><span class="p">)</span><span class="si">}</span><span class="s2">),&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">get_time_unit_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_second_time_unit</span><span class="p">)</span><span class="si">}</span><span class="s2">,&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">get_time_unit_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_third_time_unit</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="p">)</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">micropython-units</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../units.html">units package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../units.html#submodules">Submodules</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Matthew Woolley.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
