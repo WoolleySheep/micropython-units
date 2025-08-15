@@ -1,6 +1,6 @@
 import unittest
 
-from units import MassUnit, mass
+from src.units import MassUnit, mass
 
 
 class ZeroTest(unittest.TestCase):

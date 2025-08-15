@@ -1,6 +1,6 @@
 import unittest
 
-from units import Angle, AngleDelta, AngleUnit
+from src.units import Angle, AngleDelta, AngleUnit
 
 
 class AngleAndAngleDeltaTest(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from units import NegativeTimeValueError, Time, TimeUnit
+from src.units import NegativeTimeValueError, Time, TimeUnit
 
 
 class TimeTest(unittest.TestCase):

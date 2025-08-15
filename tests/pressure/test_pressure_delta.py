@@ -1,6 +1,6 @@
 import unittest
 
-from units import PressureDelta, PressureUnit
+from src.units import PressureDelta, PressureUnit
 
 
 class PressureDeltaTest(unittest.TestCase):

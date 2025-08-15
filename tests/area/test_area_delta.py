@@ -1,6 +1,6 @@
 import unittest
 
-from units import AreaDelta, AreaUnit
+from src.units import AreaDelta, AreaUnit
 
 
 class AreaDeltaTest(unittest.TestCase):

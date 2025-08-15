@@ -1,6 +1,6 @@
 import unittest
 
-from units import Area, AreaUnit, NegativeAreaValueError
+from src.units import Area, AreaUnit, NegativeAreaValueError
 
 
 class AreaTest(unittest.TestCase):

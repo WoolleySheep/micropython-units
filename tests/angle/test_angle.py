@@ -1,7 +1,7 @@
 import math
 import unittest
 
-from units import Angle, AngleUnit
+from src.units import Angle, AngleUnit
 
 
 class AngleTest(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from units import DistanceUnit, length
+from src.units import DistanceUnit, length
 
 
 class ZeroTest(unittest.TestCase):

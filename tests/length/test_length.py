@@ -1,6 +1,6 @@
 import unittest
 
-from units import DistanceUnit, Length, NegativeLengthValueError
+from src.units import DistanceUnit, Length, NegativeLengthValueError
 
 
 class LengthTest(unittest.TestCase):

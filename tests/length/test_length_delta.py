@@ -1,6 +1,6 @@
 import unittest
 
-from units import DistanceUnit, LengthDelta
+from src.units import DistanceUnit, LengthDelta
 
 
 class LengthDeltaTest(unittest.TestCase):

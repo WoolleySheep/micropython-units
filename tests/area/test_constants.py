@@ -1,6 +1,6 @@
 import unittest
 
-from units import AreaUnit, area
+from src.units import AreaUnit, area
 
 
 class ZeroTest(unittest.TestCase):

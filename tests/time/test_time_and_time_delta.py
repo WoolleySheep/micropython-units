@@ -1,6 +1,6 @@
 import unittest
 
-from units import Time, TimeDelta, TimeUnit
+from src.units import Time, TimeDelta, TimeUnit
 
 
 class TimeAndTimeDeltaTest(unittest.TestCase):

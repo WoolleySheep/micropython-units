@@ -1,6 +1,6 @@
 import unittest
 
-from units import Displacement, DistanceUnit
+from src.units import Displacement, DistanceUnit
 
 
 class DisplacementTest(unittest.TestCase):

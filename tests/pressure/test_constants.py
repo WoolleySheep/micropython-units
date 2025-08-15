@@ -1,6 +1,6 @@
 import unittest
 
-from units import PressureUnit, pressure
+from src.units import PressureUnit, pressure
 
 
 class PerfectVacuumTest(unittest.TestCase):

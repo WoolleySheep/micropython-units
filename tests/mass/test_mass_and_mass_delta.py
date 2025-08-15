@@ -1,6 +1,6 @@
 import unittest
 
-from units import Mass, MassDelta, MassUnit
+from src.units import Mass, MassDelta, MassUnit
 
 
 class MassAndMassDeltaTest(unittest.TestCase):

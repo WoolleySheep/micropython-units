@@ -1,6 +1,6 @@
 import unittest
 
-from units import Mass, MassUnit, NegativeMassValueError
+from src.units import Mass, MassUnit, NegativeMassValueError
 
 
 class MassTest(unittest.TestCase):

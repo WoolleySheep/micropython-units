@@ -1,6 +1,6 @@
 import unittest
 
-from units import NegativePressureValueError, Pressure, PressureUnit
+from src.units import NegativePressureValueError, Pressure, PressureUnit
 
 
 class PressureTest(unittest.TestCase):

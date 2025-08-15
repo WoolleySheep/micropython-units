@@ -1,7 +1,7 @@
 import math
 import unittest
 
-from units import AngleDelta, AngleUnit
+from src.units import AngleDelta, AngleUnit
 
 
 class AngleDeltaTest(unittest.TestCase):

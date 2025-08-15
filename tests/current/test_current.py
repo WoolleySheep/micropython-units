@@ -1,6 +1,6 @@
 import unittest
 
-from units import Current, CurrentUnit
+from src.units import Current, CurrentUnit
 
 
 class CurrentTest(unittest.TestCase):

@@ -1,7 +1,7 @@
 import math
 import unittest
 
-from units import AngleUnit, AngularDisplacement
+from src.units import AngleUnit, AngularDisplacement
 
 
 class AngularDisplacementTest(unittest.TestCase):

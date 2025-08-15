@@ -1,6 +1,6 @@
 import unittest
 
-from units import Voltage, VoltageUnit
+from src.units import Voltage, VoltageUnit
 
 
 class VoltageTest(unittest.TestCase):

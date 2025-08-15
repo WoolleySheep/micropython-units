@@ -1,7 +1,6 @@
 """Package for unit tests of physical quantity classes."""
 
 from .angle import AngleAndAngleDeltaTest, AngleDeltaTest, AngleTest
-from .angle import ZeroTest as AngleZeroTest
 from .angular_motion import (
     AngularAccelerationTest,
     AngularDisplacementTest,
@@ -11,7 +10,6 @@ from .angular_motion import (
 from .area import AreaAndAreaDeltaTest, AreaDeltaTest, AreaTest
 from .area import ZeroTest as AreaZeroTest
 from .current import CurrentTest
-from .current import ZeroTest as CurrentZeroTest
 from .flow_rate import MassFlowRateTest, VolumetricFlowRateTest
 from .length import LengthAndLengthDeltaTest, LengthDeltaTest, LengthTest
 from .length import ZeroTest as LengthZeroTest
@@ -34,43 +32,41 @@ from .temperature import (
 from .time import TimeAndTimeDeltaTest, TimeDeltaTest, TimeTest
 from .time import ZeroTest as TimeZeroTest
 from .voltage import VoltageTest
-from .voltage import ZeroTest as VoltageZeroTest
 from .volume import VolumeAndVolumeDeltaTest, VolumeDeltaTest, VolumeTest
 from .volume import ZeroTest as VolumeZeroTest
 
 __all__ = [
-    "VoltageZeroTest",
-    "VoltageTest",
-    "CurrentZeroTest",
-    "CurrentTest",
+    "AbsoluteZeroTest",
+    "AccelerationTest",
+    "AngleAndAngleDeltaTest",
+    "AngleDeltaTest",
+    "AngleTest",
+    "AngularAccelerationTest",
+    "AngularDisplacementTest",
+    "AngularJerkTest",
+    "AngularVelocityTest",
     "AreaAndAreaDeltaTest",
     "AreaDeltaTest",
     "AreaTest",
     "AreaZeroTest",
-    "AbsoluteZeroTest",
-    "JerkTest",
-    "LengthZeroTest",
-    "PerfectVacuumTest",
-    "LengthAndLengthDeltaTest",
-    "AngleAndAngleDeltaTest",
-    "AngleZeroTest",
-    "AngularJerkTest",
-    "AngleTest",
-    "AngleDeltaTest",
-    "LengthDeltaTest",
-    "LengthDeltaTest",
-    "AccelerationTest",
-    "AngularAccelerationTest",
-    "AngularDisplacementTest",
-    "AngularVelocityTest",
+    "CurrentTest",
     "DisplacementTest",
-    "VelocityTest",
+    "JerkTest",
+    "LengthAndLengthDeltaTest",
+    "LengthDeltaTest",
+    "LengthDeltaTest",
     "LengthTest",
+    "LengthZeroTest",
+    "MassAndMassDeltaTest",
+    "MassDeltaTest",
+    "MassFlowRateTest",
+    "MassTest",
+    "MassZeroTest",
+    "PerfectVacuumTest",
     "PressureAndPressureDeltaTest",
     "PressureDeltaTest",
     "PressureTest",
     "StandardAtmosphereTest",
-    "MassFlowRateTest",
     "TemperatureAndTemperatureDeltaTest",
     "TemperatureDeltaTest",
     "TemperatureTest",
@@ -78,13 +74,11 @@ __all__ = [
     "TimeDeltaTest",
     "TimeTest",
     "TimeZeroTest",
+    "VelocityTest",
+    "VoltageTest",
     "VolumeAndVolumeDeltaTest",
     "VolumeDeltaTest",
     "VolumeTest",
     "VolumeZeroTest",
-    "MassAndMassDeltaTest",
-    "MassDeltaTest",
-    "MassTest",
-    "MassZeroTest",
     "VolumetricFlowRateTest",
 ]

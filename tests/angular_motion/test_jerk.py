@@ -1,7 +1,7 @@
 import math
 import unittest
 
-from units import (
+from src.units import (
     AngleUnit,
     AngularJerk,
     TimeUnit,

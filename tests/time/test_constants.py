@@ -1,6 +1,6 @@
 import unittest
 
-from units import TimeUnit, time
+from src.units import TimeUnit, time
 
 
 class ZeroTest(unittest.TestCase):
