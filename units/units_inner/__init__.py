@@ -14,6 +14,7 @@ from . import (
     pressure,
     temperature,
     time,
+    voltage,
     volume,
 )
 
@@ -28,5 +29,6 @@ __all__ = [
     "pressure",
     "temperature",
     "time",
+    "voltage",
     "volume",
 ]

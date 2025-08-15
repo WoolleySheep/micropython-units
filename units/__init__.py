@@ -11,6 +11,7 @@ from . import (
     pressure,
     temperature,
     time,
+    voltage,
     volume,
 )
 from .units_inner.angle import Angle, AngleDelta
@@ -39,6 +40,8 @@ from .units_inner.temperature import (
 from .units_inner.temperature import Unit as TemperatureUnit
 from .units_inner.time import NegativeTimeValueError, Time, TimeDelta
 from .units_inner.time import Unit as TimeUnit
+from .units_inner.voltage import Unit as VoltageUnit
+from .units_inner.voltage import Voltage
 from .units_inner.volume import NegativeVolumeValueError, Volume, VolumeDelta
 from .units_inner.volume import Unit as VolumeUnit
 
@@ -84,6 +87,8 @@ __all__ = [
     "TimeUnit",
     "Velocity",
     "Velocity",
+    "Voltage",
+    "VoltageUnit",
     "Volume",
     "VolumeDelta",
     "VolumeUnit",
@@ -98,5 +103,6 @@ __all__ = [
     "pressure",
     "temperature",
     "time",
+    "voltage",
     "volume",
 ]

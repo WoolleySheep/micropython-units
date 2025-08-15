@@ -285,6 +285,26 @@
             "github:WoolleySheep/micropython-units/units/units_inner/time/unit.py"
         ],
         [
+            "units/units_inner/voltage/__init__.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/voltage/__init__.py"
+        ],
+        [
+            "units/units_inner/voltage/constants.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/voltage/constants.py"
+        ],
+        [
+            "units/units_inner/voltage/current.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/voltage/current.py"
+        ],
+        [
+            "units/units_inner/voltage/unit.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/voltage/unit.py"
+        ],
+        [
+            "units/units_inner/voltage/voltage.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/voltage/voltage.py"
+        ],
+        [
             "units/units_inner/volume/__init__.py",
             "github:WoolleySheep/micropython-units/units/units_inner/volume/__init__.py"
         ],
@@ -307,6 +327,10 @@
         [
             "units/units_inner/volume/volume_delta.py",
             "github:WoolleySheep/micropython-units/units/units_inner/volume/volume_delta.py"
+        ],
+        [
+            "units/voltage.py",
+            "github:WoolleySheep/micropython-units/units/voltage.py"
         ],
         [
             "units/volume.py",

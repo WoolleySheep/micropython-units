@@ -33,10 +33,14 @@ from .temperature import (
 )
 from .time import TimeAndTimeDeltaTest, TimeDeltaTest, TimeTest
 from .time import ZeroTest as TimeZeroTest
+from .voltage import VoltageTest
+from .voltage import ZeroTest as VoltageZeroTest
 from .volume import VolumeAndVolumeDeltaTest, VolumeDeltaTest, VolumeTest
 from .volume import ZeroTest as VolumeZeroTest
 
 __all__ = [
+    "VoltageZeroTest",
+    "VoltageTest",
     "CurrentZeroTest",
     "CurrentTest",
     "AreaAndAreaDeltaTest",
