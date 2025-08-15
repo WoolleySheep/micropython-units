@@ -91,6 +91,9 @@ set_pump_speed(new_flow_rate)
     - Volumetric Flow Rate
     - Mass Flow Rate
 
+## API documentation
+Library API documentation can be found [here on GitHub Pages](https://woolleysheep.github.io/micropython-units/).
+
 ## For users
 ### How to install
 ```python
