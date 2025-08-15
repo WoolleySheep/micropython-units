@@ -3,6 +3,7 @@
 from . import (
     angle,
     angular_motion,
+    area,
     flow_rate,
     length,
     linear_motion,
@@ -84,6 +85,7 @@ __all__ = [
     "VolumetricFlowRate",
     "angle",
     "angular_motion",
+    "area",
     "flow_rate",
     "length",
     "linear_motion",
