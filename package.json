@@ -13,6 +13,10 @@
             "github:WoolleySheep/micropython-units/units/angular_motion.py"
         ],
         [
+            "units/area.py",
+            "github:WoolleySheep/micropython-units/units/area.py"
+        ],
+        [
             "units/flow_rate.py",
             "github:WoolleySheep/micropython-units/units/flow_rate.py"
         ],
@@ -83,6 +87,30 @@
         [
             "units/units_inner/angular_motion/velocity.py",
             "github:WoolleySheep/micropython-units/units/units_inner/angular_motion/velocity.py"
+        ],
+        [
+            "units/units_inner/area/__init__.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/area/__init__.py"
+        ],
+        [
+            "units/units_inner/area/area.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/area/area.py"
+        ],
+        [
+            "units/units_inner/area/area_delta.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/area/area_delta.py"
+        ],
+        [
+            "units/units_inner/area/constants.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/area/constants.py"
+        ],
+        [
+            "units/units_inner/area/exceptions.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/area/exceptions.py"
+        ],
+        [
+            "units/units_inner/area/unit.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/area/unit.py"
         ],
         [
             "units/units_inner/flow_rate/__init__.py",

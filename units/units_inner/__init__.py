@@ -6,6 +6,7 @@ Structured like this to allow for internal sharing of non-public functions.
 from . import (
     angle,
     angular_motion,
+    area,
     flow_rate,
     length,
     linear_motion,
@@ -18,6 +19,7 @@ from . import (
 __all__ = [
     "angle",
     "angular_motion",
+    "area",
     "flow_rate",
     "length",
     "linear_motion",

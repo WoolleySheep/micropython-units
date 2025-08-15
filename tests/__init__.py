@@ -8,6 +8,8 @@ from .angular_motion import (
     AngularJerkTest,
     AngularVelocityTest,
 )
+from .area import AreaAndAreaDeltaTest, AreaDeltaTest, AreaTest
+from .area import ZeroTest as AreaZeroTest
 from .flow_rate import MassFlowRateTest, VolumetricFlowRateTest
 from .length import LengthAndLengthDeltaTest, LengthDeltaTest, LengthTest
 from .length import ZeroTest as LengthZeroTest
@@ -33,6 +35,10 @@ from .volume import VolumeAndVolumeDeltaTest, VolumeDeltaTest, VolumeTest
 from .volume import ZeroTest as VolumeZeroTest
 
 __all__ = [
+    "AreaAndAreaDeltaTest",
+    "AreaDeltaTest",
+    "AreaTest",
+    "AreaZeroTest",
     "AbsoluteZeroTest",
     "JerkTest",
     "LengthZeroTest",

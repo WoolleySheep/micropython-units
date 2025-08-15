@@ -1,6 +1,13 @@
 """Module for the volume unit enum."""
 
+# ruff: noqa: TID252
+
 from typing import TYPE_CHECKING, Final
+
+from ..length import Unit as DistanceUnit
+from ..length import get_unit_abbreviation as get_distance_unit_abbreviation
+from ..length import get_unit_delta_per_metre as get_distance_unit_delta_per_metre
+from ..length import get_unit_name as get_distance_unit_name
 
 if TYPE_CHECKING:
     from enum import IntEnum
@@ -61,7 +68,7 @@ class _UnitInfo:
         return self._abbreviation
 
     @property
-    def unit_delta_per_metre(self) -> float:
+    def unit_delta_per_cubic_metre(self) -> float:
         """The change in volume expressed as the unit per 1m^3.
 
         Equivalent to the gradient of the cubic-metre-vs-unit graph.
@@ -73,9 +80,10 @@ class _UnitInfo:
 _UNITS_INFO: Final = [
     _UnitInfo(
         unit=Unit.CUBIC_METRE,
-        name="cubic metre",
-        abbreviation="m^3",
-        unit_delta_per_cubic_metre=1,
+        name=f"cubic {get_distance_unit_name(DistanceUnit.METRE)}",
+        abbreviation=f"{get_distance_unit_abbreviation(DistanceUnit.METRE)}^3",
+        unit_delta_per_cubic_metre=get_distance_unit_delta_per_metre(DistanceUnit.METRE)
+        ** 3,
     ),
     _UnitInfo(
         unit=Unit.LITRE,
@@ -131,6 +139,6 @@ def get_unit_delta_per_cubic_metre(
     Not intended for public use.
     """
     try:
-        return _UNIT_TO_INFO_MAP[unit].unit_delta_per_metre
+        return _UNIT_TO_INFO_MAP[unit].unit_delta_per_cubic_metre
     except KeyError as e:
         raise ValueError from e

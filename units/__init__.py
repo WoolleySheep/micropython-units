@@ -17,6 +17,8 @@ from .units_inner.angular_motion import Acceleration as AngularAcceleration
 from .units_inner.angular_motion import Displacement as AngularDisplacement
 from .units_inner.angular_motion import Jerk as AngularJerk
 from .units_inner.angular_motion import Velocity as AngularVelocity
+from .units_inner.area import Area, AreaDelta, NegativeAreaValueError
+from .units_inner.area import Unit as AreaUnit
 from .units_inner.flow_rate import MassFlowRate, VolumetricFlowRate
 from .units_inner.length import Length, LengthDelta, NegativeLengthValueError
 from .units_inner.length import Unit as DistanceUnit
@@ -45,6 +47,9 @@ __all__ = [
     "AngularDisplacement",
     "AngularJerk",
     "AngularVelocity",
+    "Area",
+    "AreaDelta",
+    "AreaUnit",
     "BelowAbsoluteZeroError",
     "Displacement",
     "Displacement",
@@ -56,6 +61,7 @@ __all__ = [
     "MassDelta",
     "MassFlowRate",
     "MassUnit",
+    "NegativeAreaValueError",
     "NegativeLengthValueError",
     "NegativeMassValueError",
     "NegativePressureValueError",
