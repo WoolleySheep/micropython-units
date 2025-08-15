@@ -17,7 +17,7 @@ from ..time import get_unit_name as get_time_unit_name
 
 
 class Velocity:
-    """The speed in a certain direction of motion."""
+    """The rate of change of the displacement of an object wrt time."""
 
     def __init__(
         self, value: float, distance_unit: DistanceUnit, time_unit: TimeUnit

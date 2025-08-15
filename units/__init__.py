@@ -15,11 +15,12 @@ from .units_inner.angle import Angle, AngleDelta
 from .units_inner.angle import Unit as AngleUnit
 from .units_inner.angular_motion import Acceleration as AngularAcceleration
 from .units_inner.angular_motion import Displacement as AngularDisplacement
+from .units_inner.angular_motion import Jerk as AngularJerk
 from .units_inner.angular_motion import Velocity as AngularVelocity
 from .units_inner.flow_rate import MassFlowRate, VolumetricFlowRate
 from .units_inner.length import Length, LengthDelta, NegativeLengthValueError
 from .units_inner.length import Unit as DistanceUnit
-from .units_inner.linear_motion import Acceleration, Displacement, Velocity
+from .units_inner.linear_motion import Acceleration, Displacement, Jerk, Velocity
 from .units_inner.mass import Mass, MassDelta, NegativeMassValueError
 from .units_inner.mass import Unit as MassUnit
 from .units_inner.pressure import NegativePressureValueError, Pressure, PressureDelta
@@ -37,17 +38,18 @@ from .units_inner.volume import Unit as VolumeUnit
 
 __all__ = [
     "Acceleration",
-    "Acceleration",
     "Angle",
     "AngleDelta",
     "AngleUnit",
     "AngularAcceleration",
     "AngularDisplacement",
+    "AngularJerk",
     "AngularVelocity",
     "BelowAbsoluteZeroError",
     "Displacement",
     "Displacement",
     "DistanceUnit",
+    "Jerk",
     "Length",
     "LengthDelta",
     "Mass",

@@ -35,7 +35,11 @@ class AngularVelocityTest(unittest.TestCase):
             (AngleUnit.DEGREE, TimeUnit.MILLISECOND, (180 / math.pi) * 1e-3),
             (AngleUnit.REVOLUTION, TimeUnit.MILLISECOND, (1 / (2 * math.pi)) * 1e-3),
         ]:
-            with self.subTest(unit=distance_unit, expected_value=expected_value):
+            with self.subTest(
+                distance_unit=distance_unit,
+                time_unit=time_unit,
+                expected_value=expected_value,
+            ):
                 self.assertAlmostEqual(
                     expected_value, delta.as_unit(distance_unit, time_unit)
                 )

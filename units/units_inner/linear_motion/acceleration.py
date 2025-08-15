@@ -19,7 +19,7 @@ from ..time import get_unit_name as get_time_unit_name
 
 
 class Acceleration:
-    """the rate of change of the acceleration of an object with respect to time."""
+    """the rate of change of the velocity of an object with respect to time."""
 
     def __init__(
         self,

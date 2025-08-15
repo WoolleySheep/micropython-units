@@ -9,7 +9,7 @@ from units import (
 
 
 class AngularAccelerationTest(unittest.TestCase):
-    """Unit tests for acceleration class."""
+    """Unit tests for angular acceleration class."""
 
     def test_create_acceleration(self) -> None:
         # Test passes if it simply doesn't throw an exception
@@ -51,7 +51,12 @@ class AngularAccelerationTest(unittest.TestCase):
             (AngleUnit.RADIAN, TimeUnit.SECOND, TimeUnit.MICROSECOND, 1 * 1 * 1e-6),
             (AngleUnit.RADIAN, TimeUnit.SECOND, TimeUnit.MILLISECOND, 1 * 1 * 1e-3),
         ]:
-            with self.subTest(unit=distance_unit, expected_value=expected_value):
+            with self.subTest(
+                distance_unit=distance_unit,
+                first_time_unit=first_time_unit,
+                second_time_unit=second_time_unit,
+                expected_value=expected_value,
+            ):
                 self.assertAlmostEqual(
                     expected_value,
                     delta.as_unit(distance_unit, first_time_unit, second_time_unit),

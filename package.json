@@ -77,6 +77,10 @@
             "github:WoolleySheep/micropython-units/units/units_inner/angular_motion/displacement.py"
         ],
         [
+            "units/units_inner/angular_motion/jerk.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/angular_motion/jerk.py"
+        ],
+        [
             "units/units_inner/angular_motion/velocity.py",
             "github:WoolleySheep/micropython-units/units/units_inner/angular_motion/velocity.py"
         ],
@@ -127,6 +131,10 @@
         [
             "units/units_inner/linear_motion/displacement.py",
             "github:WoolleySheep/micropython-units/units/units_inner/linear_motion/displacement.py"
+        ],
+        [
+            "units/units_inner/linear_motion/jerk.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/linear_motion/jerk.py"
         ],
         [
             "units/units_inner/linear_motion/velocity.py",

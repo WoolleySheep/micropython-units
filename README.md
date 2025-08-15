@@ -77,10 +77,12 @@ set_robot_arm_maximum_rotation_acceleration(new_acceleration)
         - Displacement
         - Velocity
         - Acceleration
+        - Jerk
     - Angular Motion
         - Angular Displacement
         - Angular Velocity
         - Angular Acceleration
+        - Angular Jerk
 - Flow Rate
     - Volumetric Flow Rate
     - Mass Flow Rate

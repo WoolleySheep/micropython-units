@@ -5,12 +5,13 @@ from .angle import ZeroTest as AngleZeroTest
 from .angular_motion import (
     AngularAccelerationTest,
     AngularDisplacementTest,
+    AngularJerkTest,
     AngularVelocityTest,
 )
 from .flow_rate import MassFlowRateTest, VolumetricFlowRateTest
 from .length import LengthAndLengthDeltaTest, LengthDeltaTest, LengthTest
 from .length import ZeroTest as LengthZeroTest
-from .linear_motion import AccelerationTest, DisplacementTest, VelocityTest
+from .linear_motion import AccelerationTest, DisplacementTest, JerkTest, VelocityTest
 from .mass import MassAndMassDeltaTest, MassDeltaTest, MassTest
 from .mass import ZeroTest as MassZeroTest
 from .pressure import (
@@ -33,11 +34,13 @@ from .volume import ZeroTest as VolumeZeroTest
 
 __all__ = [
     "AbsoluteZeroTest",
+    "JerkTest",
     "LengthZeroTest",
     "PerfectVacuumTest",
     "LengthAndLengthDeltaTest",
     "AngleAndAngleDeltaTest",
     "AngleZeroTest",
+    "AngularJerkTest",
     "AngleTest",
     "AngleDeltaTest",
     "LengthDeltaTest",

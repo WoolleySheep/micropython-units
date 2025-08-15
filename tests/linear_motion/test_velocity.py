@@ -49,7 +49,11 @@ class VelocityTest(unittest.TestCase):
             (DistanceUnit.FOOT, TimeUnit.MILLISECOND, 3.28083989501 * 1e-3),
             (DistanceUnit.INCH, TimeUnit.MILLISECOND, 39.3700787402 * 1e-3),
         ]:
-            with self.subTest(unit=distance_unit, expected_value=expected_value):
+            with self.subTest(
+                distance_unit=distance_unit,
+                time_unit=time_unit,
+                expected_value=expected_value,
+            ):
                 self.assertAlmostEqual(
                     expected_value, delta.as_unit(distance_unit, time_unit)
                 )
