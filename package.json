@@ -293,10 +293,6 @@
             "github:WoolleySheep/micropython-units/units/units_inner/voltage/constants.py"
         ],
         [
-            "units/units_inner/voltage/current.py",
-            "github:WoolleySheep/micropython-units/units/units_inner/voltage/current.py"
-        ],
-        [
             "units/units_inner/voltage/unit.py",
             "github:WoolleySheep/micropython-units/units/units_inner/voltage/unit.py"
         ],
