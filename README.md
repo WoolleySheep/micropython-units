@@ -71,6 +71,7 @@ set_robot_arm_maximum_acceleration(new_acceleration)
 - Derived quantities
     - Pressure
     - Volume
+    - Angle
 - Motion
     - Linear Motion
         - Displacement

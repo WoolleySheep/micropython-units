@@ -3,9 +3,19 @@
 Structured like this to allow for internal sharing of non-public functions.
 """
 
-from . import flow_rate, length, linear_motion, pressure, temperature, time, volume
+from . import (
+    angle,
+    flow_rate,
+    length,
+    linear_motion,
+    pressure,
+    temperature,
+    time,
+    volume,
+)
 
 __all__ = [
+    "angle",
     "flow_rate",
     "length",
     "linear_motion",

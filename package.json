@@ -5,6 +5,10 @@
             "github:WoolleySheep/micropython-units/units/__init__.py"
         ],
         [
+            "units/angle.py",
+            "github:WoolleySheep/micropython-units/units/angle.py"
+        ],
+        [
             "units/flow_rate.py",
             "github:WoolleySheep/micropython-units/units/flow_rate.py"
         ],
@@ -35,6 +39,26 @@
         [
             "units/units_inner/__init__.py",
             "github:WoolleySheep/micropython-units/units/units_inner/__init__.py"
+        ],
+        [
+            "units/units_inner/angle/__init__.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/angle/__init__.py"
+        ],
+        [
+            "units/units_inner/angle/angle.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/angle/angle.py"
+        ],
+        [
+            "units/units_inner/angle/angle_delta.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/angle/angle_delta.py"
+        ],
+        [
+            "units/units_inner/angle/constants.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/angle/constants.py"
+        ],
+        [
+            "units/units_inner/angle/unit.py",
+            "github:WoolleySheep/micropython-units/units/units_inner/angle/unit.py"
         ],
         [
             "units/units_inner/flow_rate/__init__.py",

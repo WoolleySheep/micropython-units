@@ -1,5 +1,7 @@
 """Package for unit tests of physical quantity classes."""
 
+from .angle import AngleAndAngleDeltaTest, AngleDeltaTest, AngleTest
+from .angle import ZeroTest as AngleZeroTest
 from .flow_rate import MassFlowRateTest, VolumetricFlowRateTest
 from .length import LengthAndLengthDeltaTest, LengthDeltaTest, LengthTest
 from .length import ZeroTest as LengthZeroTest
@@ -29,6 +31,11 @@ __all__ = [
     "LengthZeroTest",
     "PerfectVacuumTest",
     "LengthAndLengthDeltaTest",
+    "AngleAndAngleDeltaTest",
+    "AngleZeroTest",
+    "AngleTest",
+    "AngleDeltaTest",
+    "LengthDeltaTest",
     "LengthDeltaTest",
     "AccelerationTest",
     "DisplacementTest",
